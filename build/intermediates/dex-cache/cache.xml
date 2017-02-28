@@ -2,274 +2,157 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_195d89aacee49e91e1af71ca7366aac64d1465a3.jar" />
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_f0ad5f1ef4b9f994ab71f89019dde7cccf72dca9/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_8bb4703c1aaf4597abc00264dbf5fdf5be6052de.jar" />
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_1936f3b5369ecd6234a1a706c68cfcaef90cc001/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_28b5460dcc07678bc6a2eef082790a781242bfe5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_2ae6eb0b5bc085f43919ed0259e04d0430a39378/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_1181e4b1067a7579b0a7c49ce9c3006428d73ab4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_744101dc589151331458bf6c04c972b322d03e3c.jar" />
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_b1c1fe7a6ce302d61f5eb330d32c8a4c6c29fc69/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_19292e2e8e967b1c7378a7243dda0d124d221328/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_f24874f3ea76af7921b9dd74677bd2543254a768/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_195d89aacee49e91e1af71ca7366aac64d1465a3.jar" />
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_219b4f684392c565f35c1a0e238d4f9bd048fcfb/classes.dex" />
     </item>
     <item
-        is-multidex="false"
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8d7de3918f7fb264c5ad620012cf98c6905ff4ab">
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_5852ed734c5c520ddeb29c960a097520c9227994/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ea25cf83ab4ea1e1664d41e9ce80979da769689f">
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f94a3547233a11008a5b05bd312c671b2d961a8d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_b60bef8d5fff136a7e2648ab53156aab5c6b68af/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_1eefda815cd69d9dc38bb9923f92fa5b17ccdeff/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/jeffreyhaines/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_d3a055d8cb978f6d419c1c6583cab231d29b87d5.jar" />
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_d3a055d8cb978f6d419c1c6583cab231d29b87d5/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_f4d65bc0cee60251a816e724be1f8e7c2ee7785a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_744101dc589151331458bf6c04c972b322d03e3c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_1923d17b9cd6e9c6d952a408f13af9dff315b72f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_41db4bab710b585ce77efce9f6f1f8e23bd45ed3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_4325ecfe761488c8ae94c32c5bea25869be0e85b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_196d3d00ab68517de31364a5545d883b35707d8c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_8bb4703c1aaf4597abc00264dbf5fdf5be6052de.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_4325ecfe761488c8ae94c32c5bea25869be0e85b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_7dc23eb99b73dc4dc5ad17d0e532fb01476b4c58.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_196d3d00ab68517de31364a5545d883b35707d8c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_41db4bab710b585ce77efce9f6f1f8e23bd45ed3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_1923d17b9cd6e9c6d952a408f13af9dff315b72f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_f4d65bc0cee60251a816e724be1f8e7c2ee7785a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_be2f41879a4771a1911afe053ab83da828d1b333.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_be2f41879a4771a1911afe053ab83da828d1b333.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_56dd7a1fd41924bbbdd1dadca3e8f8fb373c2e8a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_56dd7a1fd41924bbbdd1dadca3e8f8fb373c2e8a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_50d611100c88ebf2c472df833cbca246e4967da7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_50d611100c88ebf2c472df833cbca246e4967da7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_d3a055d8cb978f6d419c1c6583cab231d29b87d5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_7dc23eb99b73dc4dc5ad17d0e532fb01476b4c58.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_7d169ec54ff82933f3d55df94b0fc355aa3f9707.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.2"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_54b562ea19a418ed004e26eea7cb484672dd8b51.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_54b562ea19a418ed004e26eea7cb484672dd8b51.jar" />
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_999761ebad651a6ea92392bed484dd31af3ae969/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="/Users/jeffreyhaines/Downloads/SpinCycle356-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_7d169ec54ff82933f3d55df94b0fc355aa3f9707.jar" />
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_91be37d37064832bf42f0fbcd08c853d454c0627/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_e0abc015d22372cde3c04aed61da3c7dc73679b9/classes.dex" />
     </item>
 
 </items>
