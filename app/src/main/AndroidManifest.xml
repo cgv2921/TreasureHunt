@@ -17,6 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".FindTreasureActivity">
+        </activity>
         <activity android:name=".ShowTreasureActivity">
         </activity>
     </application>

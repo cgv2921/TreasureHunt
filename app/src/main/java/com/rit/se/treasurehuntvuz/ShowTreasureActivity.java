@@ -78,6 +78,7 @@ public class ShowTreasureActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        // TODO: This should either return to FindTreasureActivity or EnterHighscoreActivity
         try {
             Intent mainActivityIntent = new Intent(this, MainActivity.class);
             startActivity(mainActivityIntent);
