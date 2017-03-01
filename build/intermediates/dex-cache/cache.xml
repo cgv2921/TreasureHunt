@@ -3,156 +3,156 @@
 
     <item
         is-multidex="false"
-        jar="/Users/jeffreyhaines/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_d3a055d8cb978f6d419c1c6583cab231d29b87d5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_28b5460dcc07678bc6a2eef082790a781242bfe5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_f0ad5f1ef4b9f994ab71f89019dde7cccf72dca9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_1936f3b5369ecd6234a1a706c68cfcaef90cc001.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_1181e4b1067a7579b0a7c49ce9c3006428d73ab4.jar" />
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-24.2.1_d9190768615e5d0e4951437962be9559ee8093fa.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_2ae6eb0b5bc085f43919ed0259e04d0430a39378.jar" />
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_83456f6ae9861370863b8b9ca5ac3bd2a423a598.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_b1c1fe7a6ce302d61f5eb330d32c8a4c6c29fc69.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_f24874f3ea76af7921b9dd74677bd2543254a768.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_999761ebad651a6ea92392bed484dd31af3ae969.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_219b4f684392c565f35c1a0e238d4f9bd048fcfb.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e4089ee7e12d61f8ab7359b4bf7766d9d2d1c28e">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_5852ed734c5c520ddeb29c960a097520c9227994.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="246e7820a21c51f2b031dbb14d1052dc68389b16">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/instant-run_f94a3547233a11008a5b05bd312c671b2d961a8d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_19292e2e8e967b1c7378a7243dda0d124d221328.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_b60bef8d5fff136a7e2648ab53156aab5c6b68af.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_e0abc015d22372cde3c04aed61da3c7dc73679b9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_1eefda815cd69d9dc38bb9923f92fa5b17ccdeff.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="/Users/jeffreyhaines/Documents/git/TreasureHunt/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_91be37d37064832bf42f0fbcd08c853d454c0627.jar" />
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_7023781568ac63f6a80eb22099cb5f62b3041601.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_7e060f7d0baf0d9b87d2d7693319796f5622012d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_80288d53a19e149b094107551d2cefbf8197d323.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-24.2.1_2e9cea0174c7a56b234c9163dbc04659541164ce.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.1_93f1f9c99b460fa87b40a5534f58bf049fd2753e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.1_33d17ea79779e08794f3c78a1acd9b28ff61207c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_94511726177f99409b9a7f2294f6e1b4d3c60d9e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.2.1_f1689076dcb554256f4c4c865e38dc248cf7d6a7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.1_10cd953c940accdea77ebb67004f63b8f836c70e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.1_a6df484094ff792187913ee8562ab45167e4c2c3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b38d963690c34d7be43731623d9854fcb5e71132">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\instant-run_4b61f7c48d3cfe61a44cc206eba8eef1c00730a4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-24.2.1_94fc752da8e265c24306fb864bb93e1c4bf0605e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.1_4d07dea342364c1dc9ec05ea1a01732ee2270a09.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-24.2.1_7c32e79822fc50f4acec6ac71f95fa5b6e6ec72e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="1330e5cc8b5caf517f59cd6dd7d2ab5c9a29a1b8">
+        <dex dex="C:\Users\jeffreyhaines\Documents\git\TreasureHunt\app\build\intermediates\pre-dexed\debug\instant-run-bootstrap_d3271c5452e53822e702879afb13bdd653f830f6.jar" />
     </item>
 
 </items>
