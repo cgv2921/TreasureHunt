@@ -8,6 +8,8 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+// Jeffrey Haines 3/4/17
+//    Added final treasure crown image and redirection to EnterHighscoreLayout
 // Jeffrey Haines 3/1/17
 //    Link to create AnimationDrawable from GIF
 //        http://tusharonweb.in/AndroidResourceTools/GifToAnimationDrawable/
@@ -20,55 +22,85 @@ import android.widget.TextView;
 public class ShowTreasureActivity extends AppCompatActivity {
 
     private AnimationDrawable treasureAnimation;
+    private boolean finalTreasure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_showtreasure);
 
-        // Set the progress string
         int numCollected = getIntent().getIntExtra("NUM_COLLECTED", -1);
         int numTotal = getIntent().getIntExtra("NUM_TOTAL", -1);
-        String progressString = String.format(getString(R.string.progress_string), numCollected, numTotal);
-        TextView progressTextView = (TextView) findViewById(R.id.progressTextView);
-        progressTextView.setText(progressString);
-        progressTextView.setTextSize(26);
 
-        // Set the treasure animation
-        ImageView treasureImage = (ImageView) findViewById(R.id.treasureAnimationView);
-        treasureImage.setBackgroundResource(R.drawable.anim_treasure);
-        treasureAnimation = (AnimationDrawable) treasureImage.getBackground();
-        treasureAnimation.setOneShot(true);
+        if(numCollected < numTotal) {
+            finalTreasure = false;
+
+            // Set the progress string
+            String progressString = String.format(getString(R.string.progress_string), numCollected, numTotal);
+            TextView progressTextView = (TextView) findViewById(R.id.progressTextView);
+            progressTextView.setText(progressString);
+            progressTextView.setTextSize(26);
+
+            // Set the treasure animation
+            ImageView treasureImage = (ImageView) findViewById(R.id.treasureAnimationView);
+            treasureImage.setBackgroundResource(R.drawable.anim_treasure);
+            treasureAnimation = (AnimationDrawable) treasureImage.getBackground();
+            treasureAnimation.setOneShot(true);
+            treasureAnimation.stop();
+        }
+        else {
+            finalTreasure = true;
+
+            // Set the final treasure string
+            String progressString = getString(R.string.final_treasure_string);
+            TextView progressTextView = (TextView) findViewById(R.id.progressTextView);
+            progressTextView.setText(progressString);
+            progressTextView.setTextSize(26);
+
+            // Set the crown image
+            ImageView crownImage = (ImageView) findViewById(R.id.treasureAnimationView);
+            crownImage.setBackgroundResource(R.drawable.crown_treasure);
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        treasureAnimation.start();
+        if(!finalTreasure) {
+            treasureAnimation.start();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        treasureAnimation.setVisible(true, false);
+        if(!finalTreasure) {
+            treasureAnimation.setVisible(true, false);
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        treasureAnimation.stop();
+        if(!finalTreasure) {
+            treasureAnimation.stop();
+        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        treasureAnimation.stop();
+        if(!finalTreasure) {
+            treasureAnimation.stop();
+        }
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        treasureAnimation.start();
+        if(!finalTreasure) {
+            treasureAnimation.start();
+        }
     }
 
     @Override
@@ -78,14 +110,22 @@ public class ShowTreasureActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // TODO: This should either return to FindTreasureActivity or EnterHighscoreActivity
-        try {
-            Intent mainActivityIntent = new Intent(this, MainActivity.class);
-            startActivity(mainActivityIntent);
-            finish();
+        if(!finalTreasure) {
+            try {
+                finish(); // go back to FindTreasureLayout
+            } catch (Exception exception) {
+                Log.e("ShowTreasureActivity", exception.getMessage());
+            }
         }
-        catch(Exception exception) {
-            Log.e("ShowTreasureActivity", exception.getMessage());
+        else {
+            try {
+                Intent enterHighscoreActivityIntent = new Intent(this, EnterHighscoreActivity.class);
+                startActivity(enterHighscoreActivityIntent);
+                FindTreasureActivity.findTreasureActivity.finish();
+                finish();
+            } catch (Exception exception) {
+                Log.e("ShowTreasureActivity", exception.getMessage());
+            }
         }
     }
 }

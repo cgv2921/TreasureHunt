@@ -1,5 +1,7 @@
 package com.rit.se.treasurehuntvuz;
 
+import java.util.Calendar;
+
 public class TreasurePoint {
 
     // Proximity is based on a percentage from the furthest_distance
@@ -34,11 +36,13 @@ public class TreasurePoint {
     private Proximity proximity;
     private final double longitude, latitude;
     private boolean found;
+    private Calendar foundTime;
 
     public TreasurePoint(double longitude, double latitude) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.found = false;
+        this.foundTime = null;
     }
 
     public Proximity getProximity() { return this.proximity; }
@@ -52,4 +56,12 @@ public class TreasurePoint {
 
     public double getFurthestDistance() { return furthestDistance; }
     public void setFurthestDistance(double distance) { furthestDistance = distance; }
+
+    public Calendar getFoundtime() {
+        if(this.foundTime == null) {
+            this.foundTime = Calendar.getInstance();
+        }
+        return this.foundTime;
+    }
+    public void setFoundTime() { this.foundTime = Calendar.getInstance(); }
 }

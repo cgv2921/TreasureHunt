@@ -1,27 +1,24 @@
 package com.rit.se.treasurehuntvuz;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-// Jeffrey Haines 3/1/17
-//    Singleton treasure point list
 public class Treasures {
-    private static List<TreasurePoint> treasurePointList;
-    private static int numCollected;
-    private static int numTotal;
-    private static Treasures treasures;
 
-    public static Treasures getTreasures(){
-        if(treasures == null){
-            treasures = new Treasures();
-        }
-        return treasures;
+    private List<TreasurePoint> treasurePointList;
+    private int numCollected;
+    private int numTotal;
+    private boolean resume;
+
+    public Treasures(){
+        newList();
     }
 
     public void newList() {
         treasurePointList = new ArrayList<>();
         numCollected = 0;
-        numTotal = treasurePointList.size();
+        numTotal = 0;
+        resume = false;
     }
 
     public List<TreasurePoint> getList(){
@@ -31,8 +28,15 @@ public class Treasures {
         return treasurePointList;
     }
 
-    public int getNumCollected() { return numCollected; }
-    public void setNumCollected(int numCol) { numCollected = numCol; }
+    public int getNumCollected() { return this.numCollected; }
+    public void setNumCollected(int numCollected) { this.numCollected = numCollected; }
+    public void incrementNamCollected() {
+        this.setNumCollected(this.getNumCollected()+1);
+    }
 
-    public int getNumTotal() { return numTotal; }
+    public int getNumTotal() { return this.numTotal; }
+    private void setNumTotal(int numTotal) { this.numTotal = numTotal; }
+
+    public boolean getResume() { return this.resume; }
+    public void setResume(boolean resume) { this.resume = resume; }
 }
