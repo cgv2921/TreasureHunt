@@ -1,9 +1,11 @@
+package com.rit.se.treasurehuntvuz;
 
-import static java.lang.Math.*
-import java.util.Random
+import java.util.*;
+import static java.lang.Math.*;
+import android.location.Location;
 
-public static class TreasureGenerator{
-    static final double RADIUS = 6378100 // radius of earth in meters
+public class TreasureGenerator{
+    static final double RADIUS = 6378100; // radius of earth in meters
 
 
     // takes int dist as distance in meters from original location
@@ -41,14 +43,14 @@ public static class TreasureGenerator{
     // initLocation to be the user's location
     // maxDist and minDist define the distance range for treasre to appear in
     // amount to be how many treasure locations should be generated
-    public static Location[] generateTreasureLocations(Location initLocation, double minDist, double maxDist, int amount){
+    public static List<Location> generateTreasureLocations(Location initLocation, double minDist, double maxDist, int amount){
 
         if(minDist < 0){
-            throw new Error("minDist cannot be less than zero")
+            throw new Error("minDist cannot be less than zero");
         }
 
         if(maxDist <= 0){
-            throw new Error("maxDist must be greater than zero")
+            throw new Error("maxDist must be greater than zero");
         }
 
         if(minDist > maxDist){
@@ -56,28 +58,28 @@ public static class TreasureGenerator{
         }
 
         if(amount <= 0){
-            throw new Error("amount must be greater than zero")
+            throw new Error("amount must be greater than zero");
         }
 
-        Random rng = new Random()
-        Location[] treasureLocations = new Location[amount];
+        Random rng = new Random();
+        List<Location> treasureLocations = new ArrayList<Location>();
         double distance;
         double bearing;
 
         for(int i = 0; i < amount; i++){
-            distance = (rng.next()*(maxDist-minDist))+minDist;
-            bearing = rng.next*360;
-            Location[i] = getTreasureLocation(initLocation, distance, bearing);
+            distance = (rng.nextInt()*(maxDist-minDist))+minDist;
+            bearing = rng.nextInt()*360;
+            treasureLocations.add(getTreasureLocation(initLocation, distance, bearing));
         }
 
         return treasureLocations;
     }
 
-    public static Location[] generateTreasureLocations(Location initLocation, double maxDist, int amount){
+    public static List<Location> generateTreasureLocations(Location initLocation, double maxDist, int amount){
         return generateTreasureLocations(initLocation, (double)0, maxDist, amount);
     }
 
-    public static Location[] generateTreasureLocations(Location initLocation, int amount){
+    public static List<Location> generateTreasureLocations(Location initLocation, int amount){
         return generateTreasureLocations(initLocation, (double)1000, amount);
     }
 
