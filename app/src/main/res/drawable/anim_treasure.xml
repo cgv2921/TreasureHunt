@@ -1,0 +1,10 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="true">
+    <item android:drawable="@drawable/anim_treasure_0" android:duration="60"/>
+    <item android:drawable="@drawable/anim_treasure_1" android:duration="60"/>
+    <item android:drawable="@drawable/anim_treasure_2" android:duration="60"/>
+    <item android:drawable="@drawable/anim_treasure_3" android:duration="60"/>
+    <item android:drawable="@drawable/anim_treasure_4" android:duration="60"/>
+    <item android:drawable="@drawable/anim_treasure_5" android:duration="60"/>
+    <item android:drawable="@drawable/anim_treasure_6" android:duration="60"/>
+    <item android:drawable="@drawable/anim_treasure_7" android:duration="60"/>
+</animation-list>
