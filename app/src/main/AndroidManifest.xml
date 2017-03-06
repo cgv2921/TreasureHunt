@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.rit.se.treasurehuntvuz">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -17,10 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FindTreasureActivity">
-        </activity>
-        <activity android:name=".ShowTreasureActivity">
-        </activity>
+        <activity
+            android:name=".FindTreasureActivity"
+            android:launchMode="singleInstance" />
+        <activity android:name=".ShowTreasureActivity" />
+        <activity android:name=".EnterHighscoreActivity" />
+        <activity android:name=".StartGameActivity" />
+        <activity android:name=".ShowHighscoreActivity" />
+        <activity android:name=".ResumeGameActivity" />
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>
