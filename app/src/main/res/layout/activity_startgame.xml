@@ -18,16 +18,25 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/random_button" />
+        android:id="@+id/resume_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/file_button" />
+        android:id="@+id/file_button"
+        android:layout_above="@+id/resume_button"
+        android:layout_alignLeft="@+id/resume_button"
+        android:layout_alignStart="@+id/resume_button" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/resume_button"/>
+        android:id="@+id/random_button"
+        android:layout_alignBaseline="@+id/whereToPlayTextView"
+        android:layout_alignBottom="@+id/whereToPlayTextView"
+        android:layout_alignLeft="@+id/file_button"
+        android:layout_alignStart="@+id/file_button" />
 
 </RelativeLayout>
