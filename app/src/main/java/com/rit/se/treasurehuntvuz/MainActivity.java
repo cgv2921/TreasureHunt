@@ -1,5 +1,7 @@
 package com.rit.se.treasurehuntvuz;
 
+import android.location.LocationManager;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;

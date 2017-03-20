@@ -119,7 +119,7 @@ public class ShowTreasureActivity extends AppCompatActivity {
         }
         else {
             try {
-                Intent enterHighscoreActivityIntent = new Intent(this, EnterHighscoreActivity.class);
+                Intent enterHighscoreActivityIntent = new Intent(ShowTreasureActivity.this, EnterHighscoreActivity.class);
                 startActivity(enterHighscoreActivityIntent);
                 FindTreasureActivity.findTreasureActivity.finish();
                 finish();
