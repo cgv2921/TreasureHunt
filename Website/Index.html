@@ -66,7 +66,7 @@
             data = json;
                           var txt = "";
             for(var i = 0; i < (data.features.length); i++){
-                txt += '\n'+ " lat: " + data.features[i].geometry.coordinates[0] + " lng: " + data.features[i].geometry.coordinates[1];
+                txt +=  data.features[i].geometry.coordinates[0] + "," + data.features[i].geometry.coordinates[1] + '\n';
             }
                 localStorage.setItem("saveddata",  txt);
             //  var data1 = JSON.stringify(data);
@@ -96,8 +96,7 @@
       },
       'data-load': {
         click: function() {
-          //use this method to load the data from somwhere
-          //e.g. from a server via loadGeoJson
+          
 
           map.data.forEach(function(f) {
             map.data.remove(f);
@@ -108,9 +107,7 @@
       },
       'data-clear': {
         click: function() {
-          //use this method to clear the data
-          //when you also want to remove the data on the server 
-          //send a geoJSON with empty features-array to the server
+          
 
           map.data.forEach(function(f) {
             map.data.remove(f);
@@ -186,30 +183,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </div>
 </div>
         
-<!-- 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript">
-// Check if the localStorage object exists
-if(localStorage){
-	$(document).ready(function(){
-		$(".data-save").click(function(){
-			// Get input name
-			//var firstName = $("#firstName").val();
-			var savedData = e.feature.getGeometry().get().lat();
-			// Store data
-    		localStorage.setItem("savedData", savedData);
-			alert("Your first name is saved.");
-		});
-		$(".data-save").click(function(){
-			// Retrieve data
-    		alert("Hi, " + localStorage.getItem("savedData"));
-		});
-	});
-} else{
-    alert("Sorry, your browser do not support local storage.");
-}
-</script>
-<!-- End Web Storage -->
+
         
         
     </body>
