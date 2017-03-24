@@ -111,7 +111,14 @@ public class StartGameActivity extends AppCompatActivity {
     }
 
     private void onFileButtonClick(Button fileButton) {
-
+        try {
+            Intent loadFileIntent = new Intent(StartGameActivity.this, FileOpenActivity.class);
+            startActivity(loadFileIntent);
+            finish();
+        }
+        catch (Exception exception) {
+            Log.e("StartGameActivity", exception.getMessage());
+        }
     }
 
     private void onResumeButtonClick(Button resumeButton) {
