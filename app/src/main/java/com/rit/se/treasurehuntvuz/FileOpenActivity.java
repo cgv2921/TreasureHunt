@@ -83,7 +83,7 @@ public class FileOpenActivity extends AppCompatActivity {
 
         File dir = Environment.getExternalStorageDirectory();
 
-        File file = new File(dir,"text.txt");
+        File file = new File(dir,"mylocations.txt");
         if(file.exists())   // check if file exist
         {
             String text = new String();
