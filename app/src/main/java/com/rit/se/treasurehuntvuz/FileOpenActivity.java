@@ -1,12 +1,18 @@
 package com.rit.se.treasurehuntvuz;
 
 import android.content.Intent;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.view.View;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * Created by vendi_000 on 3/22/2017.
@@ -73,7 +79,7 @@ public class FileOpenActivity extends AppCompatActivity {
     }
 
     private void onLoadButtonClick(Button startButton) {
-        TextView tv = (TextView)findViewById(R.id.textView);
+        TextView tv = (TextView)findViewById(R.id.loadFile_button);
 
         File dir = Environment.getExternalStorageDirectory();
 
