@@ -73,6 +73,30 @@ public class FileOpenActivity extends AppCompatActivity {
     }
 
     private void onLoadButtonClick(Button startButton) {
+        TextView tv = (TextView)findViewById(R.id.textView);
 
+        File dir = Environment.getExternalStorageDirectory();
+
+        File file = new File(dir,"text.txt");
+        if(file.exists())   // check if file exist
+        {
+            String text = new String();
+
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file));
+                String line;
+                line = br.readLine();
+                tv.setText(line);
+
+            }
+            catch (IOException e) {
+                tv.setText(e.toString());
+            }
+
+        }
+        else
+        {
+            tv.setText("Sorry file doesn't exist!!");
+        }
     }
 }
