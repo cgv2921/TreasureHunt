@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Set random button
+        // Set start button
         String startButtonString = getString(R.string.start_button);
         Button startButton = (Button) findViewById(R.id.start_button);
         startButton.setText(startButtonString);
