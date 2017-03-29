@@ -83,6 +83,16 @@ public class TreasureGenerator{
         return generateTreasureLocations(initLocation, (double)1000, amount);
     }
 
+    //public static void main(String [] args)
+    //{
+
+      //  TreasureGenerator l = new TreasureGenerator();
+
+        //Location t = new Location(android.location);
+
+
+
+    //}
     
 }
 
