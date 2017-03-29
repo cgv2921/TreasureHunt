@@ -11,7 +11,7 @@
     tools:context="com.rit.se.treasurehuntvuz.EnterHighscoreActivity">
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/playerNameConfirmButton"
+            android:id="@+id/confirm_player_name_button"
             android:text="@string/confirm_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,8 +19,7 @@
             android:layout_centerHorizontal="true" />
 
         <TextView
-            android:id="@+id/scoreTextView"
-            android:text="Score: "
+            android:id="@+id/score_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -28,12 +27,12 @@
             android:layout_centerHorizontal="true" />
 
         <EditText
-            android:id="@+id/enterScoreField"
+            android:id="@+id/enter_name_field"
             android:inputType="text"
             android:maxLength="3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/playerNameConfirmButton"
+            android:layout_above="@+id/confirm_player_name_button"
             android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
