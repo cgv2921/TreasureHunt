@@ -1,5 +1,6 @@
 package com.rit.se.treasurehuntvuz;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import android.view.View;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -31,7 +34,11 @@ public class FileOpenActivity extends AppCompatActivity {
         loadButton.setText(loadButtonString);
         loadButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                onLoadButtonClick((Button) v);
+                try {
+                    onLoadButtonClick((Button) v);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -78,12 +85,13 @@ public class FileOpenActivity extends AppCompatActivity {
         }
     }
 
-    private void onLoadButtonClick(Button startButton) {
+    private void onLoadButtonClick(Button startButton) throws FileNotFoundException {
+
         TextView tv = (TextView)findViewById(R.id.loadFile_button);
 
         File dir = Environment.getExternalStorageDirectory();
 
-        File file = new File(dir,"mylocations.txt");
+        File file = new File(dir,"text.txt");
         if(file.exists())   // check if file exist
         {
             String text = new String();
@@ -104,5 +112,5 @@ public class FileOpenActivity extends AppCompatActivity {
         {
             tv.setText("Sorry file doesn't exist!!");
         }
-    }
+         }
 }
