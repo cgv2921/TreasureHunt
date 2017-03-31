@@ -3,7 +3,9 @@ package com.rit.se.treasurehuntvuz;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -18,25 +20,30 @@ import android.graphics.BitmapFactory;
 //    Made FindTreasureActivity a single instance so we can kill it when player finds all the treasure etc.
 //        http://stackoverflow.com/questions/10379134/finish-an-activity-from-another-activity
 
-public class FindTreasureActivity extends AppCompatActivity implements SensorEventListener {
+public class FindTreasureActivity extends AppCompatActivity {
 
     public static Activity findTreasureActivity;
-    private SensorManager mSensorManager;
-    private Sensor mOrient;
-    private Canvas findTreasureCanvas;
+    private static Location currentLocation;
+    public static String[] locationMesseges = {"Cold", "Hot", "Getting Hot", "Getting Colder"};
 
+    //http://stackoverflow.com/questions/14295150/how-to-update-a-textview-in-an-activity-constantly-in-an-infinite-loop
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        findTreasureActivity = this;
-
         super.onCreate(savedInstanceState);
+        findTreasureActivity = this;
         setContentView(R.layout.activity_findtreasure);
+        final Handler handler=new Handler();
+        handler.post(new Runnable(){
+            @Override
+            public void run() {
+                lookForTreasure();
+                handler.postDelayed(this,500); // set time here to refresh textView
+            }
+        });
+    }
 
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mOrient = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
+    public void lookForTreasure(){
 
-        Bitmap findTreasureBitmap = Bitmap.createBitmap(428, 200, Bitmap.Config.ARGB_8888);
-        findTreasureCanvas = new Canvas(findTreasureBitmap);
     }
 
     @Override
@@ -47,13 +54,11 @@ public class FindTreasureActivity extends AppCompatActivity implements SensorEve
     @Override
     protected void onResume() {
         super.onResume();
-        mSensorManager.registerListener(this, mOrient, SensorManager.SENSOR_DELAY_UI);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mSensorManager.unregisterListener(this);
     }
 
     @Override
@@ -80,64 +85,6 @@ public class FindTreasureActivity extends AppCompatActivity implements SensorEve
         catch(Exception exception) {
             Log.e("FindTreasureActivity", exception.getMessage());
         }
-    }
-
-    @Override
-    public final void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
-
-    @Override
-    public final void onSensorChanged(SensorEvent event) {
-        int yaw = (int)event.values[0];
-        updateTreasures(yaw);
-    }
-
-    private void updateTreasures(int yaw) {
-        // TODO: get real player location from GPS
-        double playerLat = 20.000;
-        double playerLon = 20.000;
-
-        // update each treasure
-        for(int i = 0; i < TreasuresSingleton.getTreasures().getList().size(); i++) {
-            TreasurePoint tempPoint = TreasuresSingleton.getTreasures().getList().get(i);
-
-            if(tempPoint.getFound())
-                continue;
-
-            /* TODO: The below code blocks relate to treasure proximity,
-                     they should be in an updateProximity(TreasurePoint treasurePoint) returns distance function */
-            // get player distance to treasure
-            double treasurePointDistance = distance(playerLat,
-                    tempPoint.getLat(), playerLon, tempPoint.getLon());
-            if(treasurePointDistance > tempPoint.getFurthestDistance())
-                tempPoint.setFurthestDistance(treasurePointDistance);
-
-            // set treasure found, if distance is less than 10%
-            if((int)(treasurePointDistance / tempPoint.getFurthestDistance()) * 100 < 10) {
-                pickUpTreasure(tempPoint);
-                continue; // treasure should disappear
-            }
-
-            // set treasure proximity
-            tempPoint.setProximity(
-                    TreasurePoint.Proximity.getProximity(
-                            (int)(treasurePointDistance / tempPoint.getFurthestDistance()) * 100 ) );
-
-            // TODO: compute the yaw differential
-
-            drawTreasure(tempPoint, 50);
-        }
-    }
-
-    // x_center center of the treasure image,
-    public void drawTreasure(TreasurePoint treasurePoint, int x_center) {
-
-        Object drawableRes = TreasurePoint.Proximity.getDrawableRes(treasurePoint.getProximity());
-        Bitmap treasureImageBitmap = BitmapFactory.decodeResource(getResources(), (int)drawableRes);
-
-        findTreasureCanvas.drawBitmap(treasureImageBitmap, x_center, 100, null);
-
-        // TODO: How do we draw the bitmap/canvas to the screen?
     }
 
     /**
