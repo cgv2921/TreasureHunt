@@ -2,6 +2,7 @@ package com.rit.se.treasurehuntvuz;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -19,6 +20,8 @@ public class StartGameActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     GoogleApiClient mGoogleApiClient;
+    private String mLatitudeText;
+    private String mLongitudeText;
 
     public void onConnected(Bundle connectionHint) {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -33,11 +36,11 @@ public class StartGameActivity extends AppCompatActivity implements
         }
         else {
 
-            LocationServices mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+            Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                     mGoogleApiClient);
             if (mLastLocation != null) {
-                mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
-                mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
+                mLatitudeText = String.valueOf(mLastLocation.getLatitude());
+                mLongitudeText = String.valueOf(mLastLocation.getLongitude());
             }
         }
     }
@@ -151,6 +154,7 @@ public class StartGameActivity extends AppCompatActivity implements
             startActivity(randomActivityIntent);
             finish();
             */
+
             } catch (Exception exception) {
                 Log.e("StartGameActivity", exception.getMessage());
             }
