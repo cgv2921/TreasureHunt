@@ -1,8 +1,10 @@
 package com.rit.se.treasurehuntvuz;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,6 +47,8 @@ public class FileOpenActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        ActivityCompat.requestPermissions(FileOpenActivity.this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         super.onStart();
     }
 
@@ -89,9 +93,9 @@ public class FileOpenActivity extends AppCompatActivity {
 
         TextView tv = (TextView)findViewById(R.id.loadFile_button);
 
-        File dir = Environment.getExternalStorageDirectory();
+        File dir = Environment.getExternalStorageDirectory().getAbsoluteFile();
 
-        File file = new File(dir,"text.txt");
+        File file = new File(dir,"mylocations.txt");
         if(file.exists())   // check if file exist
         {
             String text = new String();
