@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.view.View;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -154,7 +156,6 @@ public class StartGameActivity extends AppCompatActivity implements
             startActivity(randomActivityIntent);
             finish();
             */
-
             } catch (Exception exception) {
                 Log.e("StartGameActivity", exception.getMessage());
             }

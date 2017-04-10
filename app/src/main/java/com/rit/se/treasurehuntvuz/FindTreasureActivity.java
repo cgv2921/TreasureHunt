@@ -1,5 +1,6 @@
 package com.rit.se.treasurehuntvuz;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,16 +14,21 @@ import android.graphics.Canvas;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import static com.rit.se.treasurehuntvuz.Treasures.getTreasures;
+// Jeffrey Haines 3/4/17
+//    Made FindTreasureActivity a single instance so we can kill it when player finds all the treasure etc.
+//        http://stackoverflow.com/questions/10379134/finish-an-activity-from-another-activity
 
 public class FindTreasureActivity extends AppCompatActivity implements SensorEventListener {
 
+    public static Activity findTreasureActivity;
     private SensorManager mSensorManager;
     private Sensor mOrient;
     private Canvas findTreasureCanvas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        findTreasureActivity = this;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_findtreasure);
 
@@ -92,8 +98,8 @@ public class FindTreasureActivity extends AppCompatActivity implements SensorEve
         double playerLon = 20.000;
 
         // update each treasure
-        for(int i = 0; i < getTreasures().getList().size(); i++) {
-            TreasurePoint tempPoint = getTreasures().getList().get(i);
+        for(int i = 0; i < TreasuresSingleton.getTreasures().getList().size(); i++) {
+            TreasurePoint tempPoint = TreasuresSingleton.getTreasures().getList().get(i);
 
             if(tempPoint.getFound())
                 continue;
@@ -108,9 +114,7 @@ public class FindTreasureActivity extends AppCompatActivity implements SensorEve
 
             // set treasure found, if distance is less than 10%
             if((int)(treasurePointDistance / tempPoint.getFurthestDistance()) * 100 < 10) {
-                tempPoint.setFound(true);
-                getTreasures().setNumCollected(getTreasures().getNumCollected() + 1);
-                pickUpTreasure(getTreasures().getNumCollected(), getTreasures().getNumTotal());
+                pickUpTreasure(tempPoint);
                 continue; // treasure should disappear
             }
 
@@ -154,12 +158,18 @@ public class FindTreasureActivity extends AppCompatActivity implements SensorEve
         return R * c * 1000; // convert to meters
     }
 
-    public boolean pickUpTreasure(int numCollected, int numTotal) {
+    public boolean pickUpTreasure(TreasurePoint treasure) {
+        // found the treasure
+        treasure.setFoundTime();
+        treasure.setFound(true);
+        TreasuresSingleton.getTreasures().incrementNamCollected();
+
+        // display the treasure
         try {
             Intent showTreasureIntent = new Intent(FindTreasureActivity.this, ShowTreasureActivity.class);
 
-            showTreasureIntent.putExtra("NUM_COLLECTED", numCollected);
-            showTreasureIntent.putExtra("NUM_TOTAL", numTotal);
+            showTreasureIntent.putExtra("TREASURE", TreasuresSingleton.getTreasures().getNumCollected());
+            showTreasureIntent.putExtra("NUM_TOTAL", TreasuresSingleton.getTreasures().getNumTotal());
 
             FindTreasureActivity.this.startActivity(showTreasureIntent);
         }

@@ -1,11 +1,16 @@
 package com.rit.se.treasurehuntvuz;
 
+import android.location.LocationManager;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
-import static com.rit.se.treasurehuntvuz.Treasures.getTreasures;
+// Jeffrey Haines 3/6/17
+//    Created the main Activity, to get to Start, Highscore, and About screens.
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +18,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Set start button
+        String startButtonString = getString(R.string.start_button);
+        Button startButton = (Button) findViewById(R.id.start_button);
+        startButton.setText(startButtonString);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onStartButtonClick((Button) v);
+            }
+        });
+
+        // Set highscore button
+        String highscoreButtonString = getString(R.string.highscore_button);
+        Button highscoreButton = (Button) findViewById(R.id.highscore_button);
+        highscoreButton.setText(highscoreButtonString);
+        highscoreButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onHighscoreButtonClick((Button) v);
+            }
+        });
+
+        // Set about button
+        String aboutButtonString = getString(R.string.about_button);
+        Button aboutButton = (Button) findViewById(R.id.about_button);
+        aboutButton.setText(aboutButtonString);
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onAboutButtonClick((Button) v);
+            }
+        });
     }
 
     @Override
@@ -47,39 +82,37 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //getTreasures().getList().add(0, new TreasurePoint(43.0861, 77.6705));
-        //findTreasure();
-        pickUpTreasure(4, 20);
+        // Go back to the android dashboard
+        finish();
     }
 
-    // TODO: this code is duplicated from FindTreasureActivity, here for your convience.
-    public boolean pickUpTreasure(int numCollected, int numTotal) {
+    private void onStartButtonClick(Button startButton) {
         try {
-            Intent showTreasureIntent = new Intent(MainActivity.this, ShowTreasureActivity.class);
-
-            showTreasureIntent.putExtra("NUM_COLLECTED", numCollected);
-            showTreasureIntent.putExtra("NUM_TOTAL", numTotal);
-
-            MainActivity.this.startActivity(showTreasureIntent);
-        }
-        catch(Exception exception) {
+            Intent startGameActivityIntent = new Intent(MainActivity.this, StartGameActivity.class);
+            startActivity(startGameActivityIntent);
+            finish();
+        } catch (Exception exception) {
             Log.e("MainActivity", exception.getMessage());
-            return false;
         }
-
-        return true;
     }
 
-    public boolean findTreasure() {
+    private void onHighscoreButtonClick(Button fileButton) {
         try {
-            Intent findTreasureIntent = new Intent(this, FindTreasureActivity.class);
-            startActivity(findTreasureIntent);
-        }
-        catch(Exception exception) {
+            Intent showHighscoreActivityIntent = new Intent(MainActivity.this, ShowHighscoreActivity.class);
+            startActivity(showHighscoreActivityIntent);
+            finish();
+        } catch (Exception exception) {
             Log.e("MainActivity", exception.getMessage());
-            return false;
         }
+    }
 
-        return true;
+    private void onAboutButtonClick(Button aboutButton) {
+        try {
+            Intent aboutActivityIntent = new Intent(MainActivity.this, AboutActivity.class);
+            startActivity(aboutActivityIntent);
+            finish();
+        } catch (Exception exception) {
+            Log.e("MainActivity", exception.getMessage());
+        }
     }
 }

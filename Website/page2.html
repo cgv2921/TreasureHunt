@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+    
+<h1>this is page two </h1> 
+
+
+<h3>show saved data </h3>
+<spin id = "playerCordinat"> </spin>
+    <script>
+
+       var textToSave = localStorage.getItem("saveddata");
+
+       document.getElementById("playerCordinat").innerHTML = textToSave;
+           
+    </script>
+
+
+<table>
+
+        <td><button onclick="saveTextAsFile()">Dowonlaod File</button></td>
+
+</table>
+ 
+<script type="text/javascript">
+ 
+function saveTextAsFile()
+{
+    var textToSave = localStorage.getItem("saveddata");
+    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = "mylocations.txt";
+ 
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+ 
+    downloadLink.click();
+}
+ 
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}
+ 
+ 
+</script>
+ 
+</body>
+</html>
