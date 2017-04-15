@@ -119,7 +119,8 @@ public class ShowTreasureActivity extends AppCompatActivity {
         }
         else {
             try {
-                Intent enterHighscoreActivityIntent = new Intent(ShowTreasureActivity.this, EnterHighscoreActivity.class);
+                Intent enterHighscoreActivityIntent = new Intent(ShowTreasureActivity.this, EnterHighScoreActivity.class);
+                enterHighscoreActivityIntent.putExtra("HIGHSCORE", calculateHighscore());
                 startActivity(enterHighscoreActivityIntent);
                 FindTreasureActivity.findTreasureActivity.finish();
                 finish();
@@ -127,5 +128,10 @@ public class ShowTreasureActivity extends AppCompatActivity {
                 Log.e("ShowTreasureActivity", exception.getMessage());
             }
         }
+    }
+
+    private int calculateHighscore() {
+        // TODO: Calculate the highscore
+        return 1000;
     }
 }

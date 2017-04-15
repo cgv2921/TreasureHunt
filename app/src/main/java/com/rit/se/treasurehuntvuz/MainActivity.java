@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.Button;
 
 // Jeffrey Haines 3/6/17
-//    Created the main Activity, to get to Start, Highscore, and About screens.
+//    Created the main Activity, to get to Start, High Score, and About screens.
+// Jeffrey HAines 4/15/17
+//    High Score button now takes your to the High Score screen.
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Set highscore button
-        String highscoreButtonString = getString(R.string.highscore_button);
-        Button highscoreButton = (Button) findViewById(R.id.highscore_button);
-        highscoreButton.setText(highscoreButtonString);
-        highscoreButton.setOnClickListener(new View.OnClickListener() {
+        // Set high score button
+        String highScoreButtonString = getString(R.string.high_score_button);
+        Button highScoreButton = (Button) findViewById(R.id.high_score_button);
+        highScoreButton.setText(highScoreButtonString);
+        highScoreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                onHighscoreButtonClick((Button) v);
+                onHighScoreButtonClick((Button) v);
             }
         });
 
@@ -96,10 +98,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void onHighscoreButtonClick(Button fileButton) {
+    private void onHighScoreButtonClick(Button fileButton) {
         try {
-            Intent showHighscoreActivityIntent = new Intent(MainActivity.this, ShowHighscoreActivity.class);
-            startActivity(showHighscoreActivityIntent);
+            Intent showHighScoreActivityIntent = new Intent(MainActivity.this, ShowHighScoreActivity.class);
+            startActivity(showHighScoreActivityIntent);
             finish();
         } catch (Exception exception) {
             Log.e("MainActivity", exception.getMessage());

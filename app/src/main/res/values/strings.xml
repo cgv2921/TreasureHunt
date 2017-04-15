@@ -9,7 +9,8 @@
     <string name="resume_button" formatted="false">Resume</string>
     <string name="where_to_start" formatted="false">What would you like to play?</string>
     <string name="start_button" formatted="false">Start</string>
-    <string name="highscore_button" formatted="false">Highscores</string>
+    <string name="high_score_button" formatted="false">High Scores</string>
+    <string name="high_score_string" formatted="true">%1$s %2$d</string>
     <string name="about_button" formatted="false">About</string>
 
     <!-- AboutActivity/Layout -->
