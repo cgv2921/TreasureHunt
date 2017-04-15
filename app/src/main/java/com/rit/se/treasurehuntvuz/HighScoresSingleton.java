@@ -10,6 +10,7 @@ class HighScoresSingleton {
         if(highScoresSingleton == null) {
             highScoresSingleton = new HighScores();
         }
+
         return highScoresSingleton;
     }
 }

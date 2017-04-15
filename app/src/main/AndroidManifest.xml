@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:name="com.rit.se.treasurehuntvuz.TreasureHuntVuzApp"
+        android:name=".TreasureHuntVuzApp"
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -26,8 +26,8 @@
         <activity android:name=".EnterHighScoreActivity" />
         <activity android:name=".StartGameActivity" />
         <activity android:name=".ShowHighScoreActivity" />
-        <activity android:name=".ResumeGameActivity" />
         <activity android:name=".AboutActivity" />
+        <activity android:name=".SaveGameActivity" />
     </application>
 
 </manifest>

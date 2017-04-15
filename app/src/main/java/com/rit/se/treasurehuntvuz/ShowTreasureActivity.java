@@ -20,7 +20,6 @@ import android.widget.TextView;
 //    Link that explains how to pass information over an intent
 //        http://stackoverflow.com/questions/2091465/how-do-i-pass-data-between-activities-on-android
 public class ShowTreasureActivity extends AppCompatActivity {
-
     private AnimationDrawable treasureAnimation;
     private boolean finalTreasure;
 
@@ -114,24 +113,27 @@ public class ShowTreasureActivity extends AppCompatActivity {
             try {
                 finish(); // go back to FindTreasureLayout
             } catch (Exception exception) {
-                Log.e("ShowTreasureActivity", exception.getMessage());
+                if(exception.getMessage() != null) {
+                    Log.e("ShowTreasureActivity", exception.getMessage());
+                } else {
+                    Log.e("HighScoreLoad", "Exception without a message.");
+                }
             }
         }
         else {
             try {
                 Intent enterHighscoreActivityIntent = new Intent(ShowTreasureActivity.this, EnterHighScoreActivity.class);
-                enterHighscoreActivityIntent.putExtra("HIGHSCORE", calculateHighscore());
+                enterHighscoreActivityIntent.putExtra("HIGHSCORE", TreasuresSingleton.getTreasures().getTreasureHuntScore());
                 startActivity(enterHighscoreActivityIntent);
                 FindTreasureActivity.findTreasureActivity.finish();
                 finish();
             } catch (Exception exception) {
-                Log.e("ShowTreasureActivity", exception.getMessage());
+                if(exception.getMessage() != null) {
+                    Log.e("ShowTreasureActivity", exception.getMessage());
+                } else {
+                    Log.e("HighScoreLoad", "Exception without a message.");
+                }
             }
         }
-    }
-
-    private int calculateHighscore() {
-        // TODO: Calculate the highscore
-        return 1000;
     }
 }

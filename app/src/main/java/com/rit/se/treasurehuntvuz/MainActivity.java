@@ -1,7 +1,5 @@
 package com.rit.se.treasurehuntvuz;
 
-import android.location.LocationManager;
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -11,9 +9,8 @@ import android.widget.Button;
 
 // Jeffrey Haines 3/6/17
 //    Created the main Activity, to get to Start, High Score, and About screens.
-// Jeffrey HAines 4/15/17
+// Jeffrey Haines 4/15/17
 //    High Score button now takes your to the High Score screen.
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -94,7 +91,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(startGameActivityIntent);
             finish();
         } catch (Exception exception) {
-            Log.e("MainActivity", exception.getMessage());
+            if(exception.getMessage() != null) {
+                Log.e("MainActivity", exception.getMessage());
+            } else {
+                Log.e("HighScoreLoad", "Exception without a message.");
+            }
         }
     }
 
@@ -104,7 +105,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(showHighScoreActivityIntent);
             finish();
         } catch (Exception exception) {
-            Log.e("MainActivity", exception.getMessage());
+            if(exception.getMessage() != null) {
+                Log.e("MainActivity", exception.getMessage());
+            } else {
+                Log.e("HighScoreLoad", "Exception without a message.");
+            }
         }
     }
 
@@ -114,7 +119,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(aboutActivityIntent);
             finish();
         } catch (Exception exception) {
-            Log.e("MainActivity", exception.getMessage());
+            if(exception.getMessage() != null) {
+                Log.e("MainActivity", exception.getMessage());
+            } else {
+                Log.e("HighScoreLoad", "Exception without a message.");
+            }
         }
     }
 }

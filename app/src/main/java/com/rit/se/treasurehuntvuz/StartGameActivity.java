@@ -50,6 +50,9 @@ public class StartGameActivity extends AppCompatActivity {
             }
         });
 
+        // Load previous game
+        TreasuresSingleton.getTreasures().loadTreasureHuntGame();
+
         // Set resume visibility
         resumeButton.setEnabled(TreasuresSingleton.getTreasures().getResume());
     }
@@ -97,16 +100,12 @@ public class StartGameActivity extends AppCompatActivity {
     }
 
     private void onRandomButtonClick(Button randomButton) {
-        if(TreasuresSingleton.getTreasures().getResume()) {
-            try {
-            /*
-            Intent randomActivityIntent = new Intent(StartGameActivity.this, RandomSelectionActivity.class);
+        try {
+            Intent randomActivityIntent = new Intent(StartGameActivity.this, FindTreasureActivity.class);
             startActivity(randomActivityIntent);
             finish();
-            */
-            } catch (Exception exception) {
-                Log.e("StartGameActivity", exception.getMessage());
-            }
+        } catch (Exception exception) {
+            Log.e("StartGameActivity", exception.getMessage());
         }
     }
 
@@ -115,6 +114,18 @@ public class StartGameActivity extends AppCompatActivity {
     }
 
     private void onResumeButtonClick(Button resumeButton) {
-
+        if(TreasuresSingleton.getTreasures().getResume()) {
+            try {
+                Intent findTreasureActivityIntent = new Intent(StartGameActivity.this, FindTreasureActivity.class);
+                startActivity(findTreasureActivityIntent);
+                finish();
+            } catch (Exception exception) {
+                if(exception.getMessage() != null) {
+                    Log.e("StartGameActivity", exception.getMessage());
+                } else {
+                    Log.e("HighScoreLoad", "Exception without a message.");
+                }
+            }
+        }
     }
 }

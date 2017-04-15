@@ -1,29 +1,18 @@
 package com.rit.se.treasurehuntvuz;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.util.Log;
-import android.graphics.Canvas;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 // Jeffrey Haines 3/4/17
 //    Made FindTreasureActivity a single instance so we can kill it when player finds all the treasure etc.
 //        http://stackoverflow.com/questions/10379134/finish-an-activity-from-another-activity
 
-public class FindTreasureActivity extends AppCompatActivity implements SensorEventListener {
+public class FindTreasureActivity extends AppCompatActivity {
 
     public static Activity findTreasureActivity;
-    private SensorManager mSensorManager;
-    private Sensor mOrient;
-    private Canvas findTreasureCanvas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +20,6 @@ public class FindTreasureActivity extends AppCompatActivity implements SensorEve
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_findtreasure);
-
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mOrient = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
-
-        Bitmap findTreasureBitmap = Bitmap.createBitmap(428, 200, Bitmap.Config.ARGB_8888);
-        findTreasureCanvas = new Canvas(findTreasureBitmap);
     }
 
     @Override
@@ -47,13 +30,11 @@ public class FindTreasureActivity extends AppCompatActivity implements SensorEve
     @Override
     protected void onResume() {
         super.onResume();
-        mSensorManager.registerListener(this, mOrient, SensorManager.SENSOR_DELAY_UI);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mSensorManager.unregisterListener(this);
     }
 
     @Override
@@ -74,107 +55,35 @@ public class FindTreasureActivity extends AppCompatActivity implements SensorEve
     @Override
     public void onBackPressed() {
         try {
-            Intent mainActivityIntent = new Intent(this, MainActivity.class);
-            startActivity(mainActivityIntent);
+            Intent saveGameActivityIntent = new Intent(this, SaveGameActivity.class);
+            startActivity(saveGameActivityIntent);
+            finish();
         }
         catch(Exception exception) {
-            Log.e("FindTreasureActivity", exception.getMessage());
-        }
-    }
-
-    @Override
-    public final void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
-
-    @Override
-    public final void onSensorChanged(SensorEvent event) {
-        int yaw = (int)event.values[0];
-        updateTreasures(yaw);
-    }
-
-    private void updateTreasures(int yaw) {
-        // TODO: get real player location from GPS
-        double playerLat = 20.000;
-        double playerLon = 20.000;
-
-        // update each treasure
-        for(int i = 0; i < TreasuresSingleton.getTreasures().getList().size(); i++) {
-            TreasurePoint tempPoint = TreasuresSingleton.getTreasures().getList().get(i);
-
-            if(tempPoint.getFound())
-                continue;
-
-            /* TODO: The below code blocks relate to treasure proximity,
-                     they should be in an updateProximity(TreasurePoint treasurePoint) returns distance function */
-            // get player distance to treasure
-            double treasurePointDistance = distance(playerLat,
-                    tempPoint.getLat(), playerLon, tempPoint.getLon());
-            if(treasurePointDistance > tempPoint.getFurthestDistance())
-                tempPoint.setFurthestDistance(treasurePointDistance);
-
-            // set treasure found, if distance is less than 10%
-            if((int)(treasurePointDistance / tempPoint.getFurthestDistance()) * 100 < 10) {
-                pickUpTreasure(tempPoint);
-                continue; // treasure should disappear
+            if(exception.getMessage() != null) {
+                Log.e("FindTreasureActivity", exception.getMessage());
+            } else {
+                Log.e("FindTreasureActivity", "Exception without a message.");
             }
-
-            // set treasure proximity
-            tempPoint.setProximity(
-                    TreasurePoint.Proximity.getProximity(
-                            (int)(treasurePointDistance / tempPoint.getFurthestDistance()) * 100 ) );
-
-            // TODO: compute the yaw differential
-
-            drawTreasure(tempPoint, 50);
         }
     }
 
-    // x_center center of the treasure image,
-    public void drawTreasure(TreasurePoint treasurePoint, int x_center) {
-
-        Object drawableRes = TreasurePoint.Proximity.getDrawableRes(treasurePoint.getProximity());
-        Bitmap treasureImageBitmap = BitmapFactory.decodeResource(getResources(), (int)drawableRes);
-
-        findTreasureCanvas.drawBitmap(treasureImageBitmap, x_center, 100, null);
-
-        // TODO: How do we draw the bitmap/canvas to the screen?
-    }
-
-    /**
-     * CREDIT: http://stackoverflow.com/users/502162/david-george
-     * Calculate distance between two points in latitude and longitude
-     */
-    public static double distance(double lat1, double lat2, double lon1, double lon2) {
-        // TODO: we should unit test this function
-        final int R = 6371; // Radius of the earth
-
-        double latDistance = Math.toRadians(lat2 - lat1);
-        double lonDistance = Math.toRadians(lon2 - lon1);
-        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
-                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
-                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        return R * c * 1000; // convert to meters
-    }
-
-    public boolean pickUpTreasure(TreasurePoint treasure) {
-        // found the treasure
-        treasure.setFoundTime();
-        treasure.setFound(true);
-        TreasuresSingleton.getTreasures().incrementNamCollected();
-
+    public boolean pickUpTreasure() {
         // display the treasure
         try {
             Intent showTreasureIntent = new Intent(FindTreasureActivity.this, ShowTreasureActivity.class);
 
-            showTreasureIntent.putExtra("TREASURE", TreasuresSingleton.getTreasures().getNumCollected());
+            showTreasureIntent.putExtra("NUM_COLLECTED", TreasuresSingleton.getTreasures().getNumCollected());
             showTreasureIntent.putExtra("NUM_TOTAL", TreasuresSingleton.getTreasures().getNumTotal());
 
             FindTreasureActivity.this.startActivity(showTreasureIntent);
         }
         catch(Exception exception) {
-            Log.e("MainActivity", exception.getMessage());
+            if(exception.getMessage() != null) {
+                Log.e("FindTreasureActivity", exception.getMessage());
+            } else {
+                Log.e("FindTreasureActivity", "Exception without a message.");
+            }
             return false;
         }
 
