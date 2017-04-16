@@ -33,6 +33,7 @@ class Treasures implements Serializable {
         private void setFoundTime() { this.foundTime = Calendar.getInstance(); }
     }
 
+    private Coins playersCoins;
     private List<Treasure> treasures;
     private int numCollected;
     private int numTotal;
@@ -43,13 +44,41 @@ class Treasures implements Serializable {
         newTreasureList();
     }
 
-    List<Treasure> getTreasureList() {
-        return new ArrayList<>(this.treasures);
+    short getNumCoins() {
+        return this.playersCoins.getNumCoins();
     }
 
-    int getNumCollected() { return this.numCollected; }
-    int getNumTotal() { return this.numTotal; }
-    boolean getResume() { return this.resume; }
+    boolean addCoins(short numCoins) {
+        try {
+            this.playersCoins.addCoins(numCoins);
+            this.isSynced = false;
+            save();
+            return true;
+        } catch (Exception exception) {
+            if(exception.getMessage() != null) {
+                Log.d("TreasuresAddCoins", exception.getMessage());
+            } else {
+                Log.e("TreasuresAddCoins", "Exception without a message.");
+            }
+            return false;
+        }
+    }
+
+    List<Treasure> getTreasureList() {
+        return Collections.unmodifiableList(this.treasures);
+    }
+
+    int getNumCollected() {
+        return this.numCollected;
+    }
+
+    int getNumTotal() {
+        return this.numTotal;
+    }
+
+    boolean getResume() {
+        return this.resume;
+    }
 
     void addTreasure(Location location) {
         // clear the list for a new game
@@ -69,6 +98,7 @@ class Treasures implements Serializable {
             this.numCollected += 1;
             foundTreasure.setFoundTime();
             foundTreasure.setFound();
+            this.addCoins((short)100);
             return true;
         }
         return false;
@@ -113,6 +143,7 @@ class Treasures implements Serializable {
             this.save();
         } else {
             this.delete();
+            this.newTreasureList();
         }
     }
 
@@ -123,6 +154,7 @@ class Treasures implements Serializable {
     }
 
     private void newTreasureList() {
+        playersCoins = new Coins();
         treasures = new ArrayList<>();
         numCollected = 0;
         numTotal = 0;
@@ -185,6 +217,7 @@ class Treasures implements Serializable {
 
                 // load this from file
                 Treasures treasures = (Treasures) input.readObject();
+                this.playersCoins = treasures.playersCoins;
                 // TODO; is a deep copy needed here?
                 this.treasures = treasures.treasures;
                 this.numCollected = treasures.numCollected;
