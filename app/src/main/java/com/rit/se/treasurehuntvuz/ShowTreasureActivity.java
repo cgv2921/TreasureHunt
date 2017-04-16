@@ -124,6 +124,7 @@ public class ShowTreasureActivity extends AppCompatActivity {
             try {
                 Intent enterHighscoreActivityIntent = new Intent(ShowTreasureActivity.this, EnterHighScoreActivity.class);
                 enterHighscoreActivityIntent.putExtra("HIGHSCORE", TreasuresSingleton.getTreasures().getTreasureHuntScore());
+                TreasuresSingleton.getTreasures().saveTreasureHuntGame(false);
                 startActivity(enterHighscoreActivityIntent);
                 FindTreasureActivity.findTreasureActivity.finish();
                 finish();
