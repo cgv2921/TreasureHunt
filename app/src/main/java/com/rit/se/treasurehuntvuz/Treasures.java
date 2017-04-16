@@ -132,6 +132,9 @@ class Treasures implements Serializable {
             }
         }
 
+        // consider a higher score for saving coins
+        tmpPlayerScore += 0.13 * this.getNumCoins();
+
         // return a positive number between 0 and 9999
         return Integer.parseInt(Integer.toString(Math.abs(tmpPlayerScore)).substring(0, 4));
     }
