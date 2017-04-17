@@ -122,10 +122,10 @@ public class ShowTreasureActivity extends AppCompatActivity {
         }
         else {
             try {
-                Intent enterHighscoreActivityIntent = new Intent(ShowTreasureActivity.this, EnterHighScoreActivity.class);
-                enterHighscoreActivityIntent.putExtra("HIGHSCORE", TreasuresSingleton.getTreasures().getTreasureHuntScore());
+                Intent enterHighScoreActivityIntent = new Intent(ShowTreasureActivity.this, EnterHighScoreActivity.class);
+                enterHighScoreActivityIntent.putExtra("HIGHSCORE", TreasuresSingleton.getTreasures().getTreasureHuntScore());
                 TreasuresSingleton.getTreasures().saveTreasureHuntGame(false);
-                startActivity(enterHighscoreActivityIntent);
+                startActivity(enterHighScoreActivityIntent);
                 FindTreasureActivity.findTreasureActivity.finish();
                 finish();
             } catch (Exception exception) {
