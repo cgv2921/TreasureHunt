@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set highscore button
         String highscoreButtonString = getString(R.string.highscore_button);
-        Button highscoreButton = (Button) findViewById(R.id.choosefile_button);
+        Button highscoreButton = (Button) findViewById(R.id.highscore_button);
         highscoreButton.setText(highscoreButtonString);
         highscoreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         // Set choose file button
 
         String chooseFileButtonString = "ChooseFile";
-        Button choosefileButton = (Button) findViewById(R.id.choosefile_button);
+        Button choosefileButton = (Button) findViewById(R.id.highscore_button);
         aboutButton.setText(aboutButtonString);
         aboutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -119,16 +119,6 @@ public class MainActivity extends AppCompatActivity {
     private void onAboutButtonClick(Button aboutButton) {
         try {
             Intent aboutActivityIntent = new Intent(MainActivity.this, AboutActivity.class);
-            startActivity(aboutActivityIntent);
-            finish();
-        } catch (Exception exception) {
-            Log.e("MainActivity", exception.getMessage());
-        }
-    }
-
-    private void onChooseFileButtonClick(Button choosefileButton) {
-        try {
-            Intent aboutActivityIntent = new Intent(MainActivity.this, ChooseFileActivity.class);
             startActivity(aboutActivityIntent);
             finish();
         } catch (Exception exception) {
