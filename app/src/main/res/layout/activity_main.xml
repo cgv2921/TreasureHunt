@@ -14,11 +14,20 @@
         android:id="@+id/about_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/highscore_button"
-        android:layout_alignStart="@+id/highscore_button" />
+        android:layout_alignLeft="@+id/choosefile_button"
+        android:layout_alignStart="@+id/choosefile_button" />
 
     <Button
-        android:id="@+id/highscore_button"
+        android:id="@+id/choosefile_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:layout_below="@+id/button"
+        android:text="Choose File" />
+
+    <Button
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/start_button"
@@ -29,6 +38,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/about_button"
-        android:layout_alignLeft="@+id/highscore_button"
-        android:layout_alignStart="@+id/highscore_button" />
+        android:layout_alignLeft="@+id/choosefile_button"
+        android:layout_alignStart="@+id/choosefile_button" />
 </RelativeLayout>
