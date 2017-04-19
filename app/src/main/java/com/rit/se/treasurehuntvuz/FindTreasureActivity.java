@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.text.FieldPosition;
 import java.text.MessageFormat;
@@ -19,6 +20,7 @@ import java.text.MessageFormat;
 public class FindTreasureActivity extends AppCompatActivity {
 
     public static Activity findTreasureActivity;
+    final TextView textView = (TextView) findViewById(R.id.textHint);
 
     //http://stackoverflow.com/questions/14295150/how-to-update-a-textview-in-an-activity-constantly-in-an-infinite-loop
     @Override
@@ -46,7 +48,7 @@ public class FindTreasureActivity extends AppCompatActivity {
             }
         }
         float closetBearing = Math.abs(currentLocation.bearingTo(closestLoc) - currentLocation.getBearing());
-        float cloestLocation = currentLocation.distanceTo(closestLoc);
+        float closetLocation = currentLocation.distanceTo(closestLoc);
         MessageFormat fmt = new MessageFormat("You are {0} and you are getting {1}.");
         String bearingStr = "";
         String distanceStr = "";
@@ -59,18 +61,25 @@ public class FindTreasureActivity extends AppCompatActivity {
         } else{
             bearingStr = "frezzinger";
         }
-        if (cloestLocation < 15){
+        if (closetLocation < 30){
             distanceStr = "blazing";
-        } else if(cloestLocation < 30){
+        } else if(closetLocation < 60){
             distanceStr = "hot";
-        } else if(cloestLocation < 60){
+        } else if(closetLocation < 120){
             distanceStr = "cold";
         } else{
             distanceStr = "frezzing";
         }
-        Object[] results = {distanceStr,bearingStr};
-        String resultStr = fmt.format(results);
-
+        String resultStr;
+        if ( closetLocation < 15){
+            resultStr = "You found a treasure!";
+            //call found treasure
+        }
+        else {
+            Object[] results = {distanceStr,bearingStr};
+            resultStr = fmt.format(results);
+        }
+        textView.setText(resultStr);
     }
 
     @Override
