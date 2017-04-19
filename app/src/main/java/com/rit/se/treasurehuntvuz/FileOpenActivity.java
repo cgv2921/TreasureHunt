@@ -86,11 +86,11 @@ public class FileOpenActivity extends AppCompatActivity {
 
         try {
 
-            Intent showHighscoreActivityIntent = new Intent(this, ShowFileseActivity.class);
-            startActivity(showHighscoreActivityIntent);
+            Intent showFilesActivityIntent = new Intent(FileOpenActivity.this, ShowFilesActivity.class);
+            startActivity(showFilesActivityIntent);
             finish();
         } catch (Exception exception) {
-            Log.e("MainActivity", exception.getMessage());
+            Log.e("FileOpenActivity", exception.getMessage());
         }
 
    /*     TextView tv = (TextView)findViewById(R.id.loadFile_button);

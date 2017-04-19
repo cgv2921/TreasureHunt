@@ -29,12 +29,12 @@ public class ChooseFileActivity extends ListActivity {
     @Override
     public void onBackPressed() {
         try {
-            Intent mainActivityIntent = new Intent(ChooseFileActivity.this, FileOpenActivity.class);
-            startActivity(mainActivityIntent);
+            Intent fileOpenActivityIntent = new Intent(ChooseFileActivity.this, FileOpenActivity.class);
+            startActivity(fileOpenActivityIntent);
             finish();
         }
         catch(Exception exception) {
-            Log.e("AboutActivity", exception.getMessage());
+            Log.e("ChooseFileActivity", exception.getMessage());
         }
     }
 

@@ -23,7 +23,7 @@
         <activity android:name=".ShowTreasureActivity" />
         <activity android:name=".EnterHighscoreActivity" />
         <activity android:name=".StartGameActivity" />
-        <activity android:name=".ShowFileseActivity" />
+        <activity android:name=".ShowFilesActivity" />
         <activity android:name=".ResumeGameActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".FileOpenActivity">
