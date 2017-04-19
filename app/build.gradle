@@ -17,6 +17,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    // Allow unit tests to use a real android.jar file
+    // (default behavior gives tests empty android.jar, which requires mocking with Mockito)
+    testOptions{
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -27,5 +32,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.0'
     compile 'com.google.android.gms:play-services:10.2.1'
     compile 'com.android.support:support-annotations:24.2.0'
+    // JUnit 4 Framework
     testCompile 'junit:junit:4.12'
 }
