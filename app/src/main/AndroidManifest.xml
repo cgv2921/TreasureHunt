@@ -26,7 +26,8 @@
         <activity android:name=".StartGameActivity" />
         <activity android:name=".ShowHighscoreActivity" />
         <activity android:name=".ResumeGameActivity" />
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".AboutActivity" />
+
     </application>
 
 </manifest>
