@@ -47,17 +47,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Set choose file button
-
-        String chooseFileButtonString = "ChooseFile";
-        Button choosefileButton = (Button) findViewById(R.id.highscore_button);
-        aboutButton.setText(aboutButtonString);
-        aboutButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                onAboutButtonClick((Button) v);
-            }
-        });
-
     }
 
     @Override
