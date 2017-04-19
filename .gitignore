@@ -3,4 +3,4 @@
 build/*
 app/app.iml
 .DS_Store
-local.property
+local.properties
