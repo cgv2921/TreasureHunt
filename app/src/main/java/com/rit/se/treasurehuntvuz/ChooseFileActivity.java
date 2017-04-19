@@ -1,26 +1,7 @@
 package com.rit.se.treasurehuntvuz;
 
-/**
- * Created by Abdulaziz on 4/17/17.
- */
-
 import android.app.ListActivity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-
-import android.app.ListActivity;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -48,7 +29,7 @@ public class ChooseFileActivity extends ListActivity {
     @Override
     public void onBackPressed() {
         try {
-            Intent mainActivityIntent = new Intent(ChooseFileActivity.this, MainActivity.class);
+            Intent mainActivityIntent = new Intent(ChooseFileActivity.this, FileOpenActivity.class);
             startActivity(mainActivityIntent);
             finish();
         }

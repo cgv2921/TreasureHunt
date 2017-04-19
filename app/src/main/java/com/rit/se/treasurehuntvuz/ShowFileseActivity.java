@@ -2,19 +2,23 @@ package com.rit.se.treasurehuntvuz;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ShowHighscoreActivity extends ListActivity {
+public class ShowFileseActivity extends ListActivity {
 
     private File currentDir;
     private FileArrayAdapter adapter;
@@ -30,7 +34,7 @@ public class ShowHighscoreActivity extends ListActivity {
     @Override
     public void onBackPressed() {
         try {
-            Intent mainActivityIntent = new Intent(ShowHighscoreActivity.this, MainActivity.class);
+            Intent mainActivityIntent = new Intent(ShowFileseActivity.this, MainActivity.class);
             startActivity(mainActivityIntent);
             finish();
         }
@@ -45,7 +49,7 @@ public class ShowHighscoreActivity extends ListActivity {
         this.setTitle("Current Dir: "+f.getName());
         List<Option> dir = new ArrayList<Option>();
         List<Option>fls = new ArrayList<Option>();
-        adapter = new FileArrayAdapter(ShowHighscoreActivity.this,R.layout.file_view,dir);
+        adapter = new FileArrayAdapter(ShowFileseActivity.this,R.layout.file_view,dir);
         this.setListAdapter(adapter);
 
         try{
@@ -86,7 +90,39 @@ public class ShowHighscoreActivity extends ListActivity {
     private void onFileClick(Option o)
     {
         Toast.makeText(this, "File Clicked: "+o.getName(), Toast.LENGTH_SHORT).show();
-        
+        TextView tv = (TextView)findViewById(R.id.loadFile_button);
+
+        //Intent mainActivityIntent = new Intent(ShowFileseActivity.this, FileOpenActivity.class);
+        //startActivity(mainActivityIntent);
+
+
+        /**
+        File dir = Environment.getExternalStorageDirectory().getAbsoluteFile();
+
+
+        File file = new File(dir,"mylocations.txt");
+        if(file.exists())   // check if file exist
+        {
+            String text = new String();
+
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(file));
+                String line;
+                line = br.readLine();
+                tv.setText(line);
+
+            }
+            catch (IOException e) {
+                tv.setText(e.toString());
+            }
+
+        }
+        else
+        {
+            tv.setText("Sorry file doesn't exist!!");
+        }
+         **/
+
     }
 
 }
