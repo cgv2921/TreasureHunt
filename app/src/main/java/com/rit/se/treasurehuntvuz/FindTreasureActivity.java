@@ -28,9 +28,9 @@ public class FindTreasureActivity extends AppCompatActivity {
 
     private Handler handler;
     private FindTreasureRunnable findTreasureRunnable;
-    Thread findTreasureThread;
-    LocationManager manager;
-    LocationListener listener;
+    private Thread findTreasureThread;
+    private LocationManager manager;
+    private LocationListener listener;
 
     private class FindTreasureRunnable implements Runnable {
         private final Object mPauseLock;
