@@ -1,6 +1,6 @@
 package com.rit.se.treasurehuntvuz;
 
-import android.location.Location;
+import android.location.*;
 import android.util.Log;
 
 import java.io.*;
@@ -9,17 +9,29 @@ import java.util.*;
 class Treasures implements Serializable {
 
     class Treasure implements Serializable {
-        private final Location location;
-        private boolean found;
-        private Calendar foundTime;
+        private final transient Location location;
+        private final double longitude;
+        private final double latitude;
+        private boolean found = false;
+        private Calendar foundTime = null;
 
         Treasure(Location location) {
-            this.location = location;
-            this.found = false;
-            this.foundTime = null;
+            this.location = new Location(location);
+            this.longitude = this.location.getLongitude();
+            this.latitude = this.location.getLatitude();
         }
 
-        Location getLocation() { return location; }
+        Treasure(double longitude, double latitude) {
+            this.longitude = longitude;
+            this.latitude = latitude;
+            this.location = new Location(LocationManager.GPS_PROVIDER);
+            this.location.setLongitude(longitude);
+            this.location.setLatitude(latitude);
+        }
+
+        Location getLocation() {
+            return location;
+        }
 
         boolean getFound() { return found; }
         private void setFound() { this.found = true; }
@@ -195,7 +207,6 @@ class Treasures implements Serializable {
             }
         } catch (Exception exception) {
             if(exception.getMessage() != null) {
-                // TODO: Can't serialize Location objects, Location class is not Serializable. Replace entire tree with Parcelable.
                 Log.d("TreasuresSave", exception.getMessage(), exception);
             } else {
                 Log.e("TreasuresSave", "Exception without a message.");
@@ -220,13 +231,18 @@ class Treasures implements Serializable {
                 ObjectInput input = new ObjectInputStream(buffer);
 
                 // load this from file
-                Treasures treasures = (Treasures) input.readObject();
-                this.playersCoins = treasures.playersCoins;
-                // TODO; is a deep copy needed here?
-                this.treasures = treasures.treasures;
-                this.numCollected = treasures.numCollected;
-                this.numTotal = treasures.numTotal;
-                this.resume = treasures.resume;
+                Treasures serializedTreasures = (Treasures) input.readObject();
+
+                this.playersCoins = serializedTreasures.playersCoins;
+
+                this.treasures.clear();
+                for(Treasure treasure : serializedTreasures.treasures) {
+                    this.treasures.add(new Treasure(treasure.longitude, treasure.latitude));
+                }
+
+                this.numCollected = serializedTreasures.numCollected;
+                this.numTotal = serializedTreasures.numTotal;
+                this.resume = serializedTreasures.resume;
 
                 input.close();
                 buffer.close();
