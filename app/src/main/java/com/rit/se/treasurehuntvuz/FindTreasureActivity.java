@@ -68,9 +68,9 @@ public class FindTreasureActivity extends AppCompatActivity {
 
                     // check found treasure criteria
                     if (closestTreasure != null) {
-                        Log.v("FindTreasureActivity", String.format("Locked on Treasure: %d %d",
-                                (int)closestTreasure.getLocation().getLongitude(),
-                                (int)closestTreasure.getLocation().getLatitude()));
+                        Log.v("FindTreasureActivity", String.format("Locked on Treasure: %f %f",
+                                closestTreasure.getLocation().getLongitude(),
+                                closestTreasure.getLocation().getLatitude()));
 
                         // treasure is found
                         if (closestDistance < TREASURE_FOUND_DISTANCE) {
