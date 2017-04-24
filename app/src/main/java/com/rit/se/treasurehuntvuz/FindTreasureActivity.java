@@ -32,92 +32,6 @@ public class FindTreasureActivity extends AppCompatActivity {
     LocationManager manager;
     LocationListener listener;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_findtreasure);
-
-        handler = new Handler(getApplicationContext().getMainLooper());
-
-        // setup findTreasureThread
-        findTreasureRunnable = new FindTreasureRunnable();
-        findTreasureThread = new Thread()
-        {
-            @Override
-            public void run() {
-                findTreasureRunnable.run();
-            }
-        };
-
-        // setup location manager and listener
-        manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        listener = new LocationListener() {
-            @Override
-            public void onLocationChanged(Location location) {
-                if(location != null) {
-                    Log.v("FindTreasureActivity", String.format("Location update: %f, %f", location.getLongitude(), location.getLatitude()));
-                    // pass location to findTreasureThread
-                    findTreasureRunnable.onLocationChanged(new Location(location));
-                }
-                else {
-                    Log.d("FindTreasureActivity", "Null location");
-                }
-            }
-
-            @Override
-            public void onStatusChanged(String provider, int status, Bundle extras) {
-                Log.v("FindTreasureActivity", String.format("Location provider status changed, %s id:%d", provider, status));
-            }
-
-            @Override
-            public void onProviderEnabled(String provider) {
-                Log.v("FindTreasureActivity", String.format("Location provider enabled, %s", provider));
-            }
-
-            @Override
-            public void onProviderDisabled(String provider) {
-                Log.v("FindTreasureActivity", String.format("Lost location provider, %s", provider));
-                findTreasureRunnable.onLocationChanged(null);
-            }
-        };
-
-        // request location permissions
-        if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-        }
-        if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED) {
-            Log.d("FindTreasureActivity", "Location permission denied");
-            if(manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                Log.d("FindTreasureActivity", "Gps enabled");
-            }
-            else {
-                Log.d("FindTreasureActivity", "Gps disabled");
-            }
-
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)) {
-                Log.d("FindTreasureActivity", "Should show explanation");
-            }
-        }
-    }
-
-    private boolean startLocationUpdates() {
-        try {
-            // start location updates
-            Log.d("FindTreasureActivity", "Requesting location updates");
-            manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GPS_UPDATE_TIME, GPS_UPDATE_DISTANCE, listener);
-            return true;
-        } catch (SecurityException exception) {
-            if(exception.getMessage() != null) {
-                Log.e("FindTreasureActivity", exception.getMessage());
-            }
-            else {
-                Log.e("FindTreasureActivity", "Exception without a message.");
-            }
-        }
-        return false;
-    }
-
     private class FindTreasureRunnable implements Runnable {
         private final Object mPauseLock;
         private boolean mPaused;
@@ -238,6 +152,75 @@ public class FindTreasureActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_findtreasure);
+
+        handler = new Handler(getApplicationContext().getMainLooper());
+
+        // setup findTreasureThread
+        findTreasureRunnable = new FindTreasureRunnable();
+        findTreasureThread = new Thread()
+        {
+            @Override
+            public void run() {
+                findTreasureRunnable.run();
+            }
+        };
+
+        // setup location manager and listener
+        manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        listener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                if(location != null) {
+                    Log.v("FindTreasureActivity", String.format("Location update: %f, %f", location.getLongitude(), location.getLatitude()));
+                    // pass location to findTreasureThread
+                    findTreasureRunnable.onLocationChanged(new Location(location));
+                }
+                else {
+                    Log.d("FindTreasureActivity", "Null location");
+                }
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+                Log.v("FindTreasureActivity", String.format("Location provider status changed, %s id:%d", provider, status));
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+                Log.v("FindTreasureActivity", String.format("Location provider enabled, %s", provider));
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+                Log.v("FindTreasureActivity", String.format("Lost location provider, %s", provider));
+                findTreasureRunnable.onLocationChanged(null);
+            }
+        };
+
+        // request location permissions
+        if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        }
+        if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED) {
+            Log.d("FindTreasureActivity", "Location permission denied");
+            if(manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                Log.d("FindTreasureActivity", "Gps enabled");
+            }
+            else {
+                Log.d("FindTreasureActivity", "Gps disabled");
+            }
+
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+                Log.d("FindTreasureActivity", "Should show explanation");
+            }
+        }
+    }
+
+    @Override
     protected void onStart() {
         // TODO: Fix application crash when device sleeps. Thread.start() already called.
         Log.v("FindTreasureActivity", "Starting FindTreasureActivity");
@@ -304,7 +287,24 @@ public class FindTreasureActivity extends AppCompatActivity {
         }
     }
 
-    void updateCoins() {
+    private boolean startLocationUpdates() {
+        try {
+            // start location updates
+            Log.d("FindTreasureActivity", "Requesting location updates");
+            manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GPS_UPDATE_TIME, GPS_UPDATE_DISTANCE, listener);
+            return true;
+        } catch (SecurityException exception) {
+            if(exception.getMessage() != null) {
+                Log.e("FindTreasureActivity", exception.getMessage());
+            }
+            else {
+                Log.e("FindTreasureActivity", "Exception without a message.");
+            }
+        }
+        return false;
+    }
+
+    private void updateCoins() {
         String playerCoinsString = String.format(getString(R.string.player_coins_string),
                 TreasuresSingleton.getTreasures().getNumCoins());
         TextView playerCoinsTextView = (TextView) findViewById(R.id.player_coin_text_view);
@@ -312,7 +312,7 @@ public class FindTreasureActivity extends AppCompatActivity {
         playerCoinsTextView.setTextSize(26);
     }
 
-    void updatePlayerHints(float distanceToTreasure, float bearingToTreasure) {
+    private void updatePlayerHints(float distanceToTreasure, float bearingToTreasure) {
 
         Log.d("FindTreasureActivity", String.format("Distance: %f Bearing: %f", distanceToTreasure, bearingToTreasure));
 
@@ -345,14 +345,14 @@ public class FindTreasureActivity extends AppCompatActivity {
                 distanceFragment, bearingFragment));
     }
 
-    void updatePlayerHints(String playerHint) {
+    private void updatePlayerHints(String playerHint) {
         // set the player hint text
         TextView playerHintsTextView = (TextView) findViewById(R.id.player_hints_text_view);
         playerHintsTextView.setText(playerHint);
         playerHintsTextView.setTextSize(26);
     }
 
-    boolean pickUpTreasure() {
+    private boolean pickUpTreasure() {
         try {
             Intent showTreasureIntent = new Intent(FindTreasureActivity.this, ShowTreasureActivity.class);
 
