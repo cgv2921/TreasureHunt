@@ -28,11 +28,13 @@ public class EnterHighScoreActivity extends AppCompatActivity {
 
         // set enter score text field
         enterNameField = (EditText) findViewById(R.id.enter_name_field);
+        enterNameField.setTextSize(26);
 
         // set confirm player name button
         String confirmPlayerNameButtonString = getString(R.string.confirm_button);
         Button confirmPlayerNameButton = (Button) findViewById(R.id.confirm_player_name_button);
         confirmPlayerNameButton.setText(confirmPlayerNameButtonString);
+        confirmPlayerNameButton.setTextSize(26);
         confirmPlayerNameButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onConfirmPlayerNameButtonClick((Button) v);

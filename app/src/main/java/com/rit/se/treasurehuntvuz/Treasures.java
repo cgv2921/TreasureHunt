@@ -195,7 +195,8 @@ class Treasures implements Serializable {
             }
         } catch (Exception exception) {
             if(exception.getMessage() != null) {
-                Log.d("TreasuresSave", exception.getMessage());
+                // TODO: Can't serialize Location objects, Location class is not Serializable. Replace entire tree with Parcelable.
+                Log.d("TreasuresSave", exception.getMessage(), exception);
             } else {
                 Log.e("TreasuresSave", "Exception without a message.");
             }

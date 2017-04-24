@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 // Jeffrey Haines 3/6/17
 //    Created the main Activity, to get to Start, High Score, and About screens.
@@ -18,10 +19,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // set main menu text view
+        String whereToPlayString = getString(R.string.main_menu_string);
+        TextView whereToPlayTextView = (TextView) findViewById(R.id.main_menu_text_view);
+        whereToPlayTextView.setText(whereToPlayString);
+        whereToPlayTextView.setTextSize(30);
+        whereToPlayTextView.setPadding(0, 5, 0, 5);
+
         // Set start button
         String startButtonString = getString(R.string.start_button);
         Button startButton = (Button) findViewById(R.id.start_button);
         startButton.setText(startButtonString);
+        startButton.setTextSize(26);
         startButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onStartButtonClick((Button) v);
@@ -32,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         String highScoreButtonString = getString(R.string.high_score_button);
         Button highScoreButton = (Button) findViewById(R.id.high_score_button);
         highScoreButton.setText(highScoreButtonString);
+        highScoreButton.setTextSize(26);
         highScoreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onHighScoreButtonClick((Button) v);
@@ -42,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         String aboutButtonString = getString(R.string.about_button);
         Button aboutButton = (Button) findViewById(R.id.about_button);
         aboutButton.setText(aboutButtonString);
+        aboutButton.setTextSize(26);
         aboutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onAboutButtonClick((Button) v);

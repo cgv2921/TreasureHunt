@@ -14,17 +14,31 @@ public class StartGameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_startgame);
+        setContentView(R.layout.activity_start_game);
 
-        // Set where to play location text
-        String whereToPlayString = getString(R.string.where_to_start);
-        TextView whereToPlayTextView = (TextView) findViewById(R.id.whereToPlayTextView);
+        // Set where to play text view
+        String whereToPlayString = getString(R.string.where_to_play_string);
+        TextView whereToPlayTextView = (TextView) findViewById(R.id.where_to_play_text_view);
         whereToPlayTextView.setText(whereToPlayString);
+        whereToPlayTextView.setTextSize(30);
+        whereToPlayTextView.setPadding(0, 5, 0, 5);
+
+        // Set resume
+        String resumeButtonString = getString(R.string.resume_button);
+        Button resumeButton = (Button) findViewById(R.id.resume_button);
+        resumeButton.setText(resumeButtonString);
+        resumeButton.setTextSize(26);
+        resumeButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onResumeButtonClick((Button) v);
+            }
+        });
 
         // Set random button
         String randomButtonString = getString(R.string.random_button);
         Button randomButton = (Button) findViewById(R.id.random_button);
         randomButton.setText(randomButtonString);
+        randomButton.setTextSize(26);
         randomButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onRandomButtonClick((Button) v);
@@ -35,19 +49,10 @@ public class StartGameActivity extends AppCompatActivity {
         String fileButtonString = getString(R.string.file_button);
         Button fileButton = (Button) findViewById(R.id.file_button);
         fileButton.setText(fileButtonString);
+        fileButton.setTextSize(26);
         fileButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onFileButtonClick((Button) v);
-            }
-        });
-
-        // Set resume
-        String resumeButtonString = getString(R.string.resume_button);
-        Button resumeButton = (Button) findViewById(R.id.resume_button);
-        resumeButton.setText(resumeButtonString);
-        resumeButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                onResumeButtonClick((Button) v);
             }
         });
 

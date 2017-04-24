@@ -50,7 +50,7 @@ class HighScores implements Serializable {
 
         @Override
         public String toString() {
-            return this.playerName + ":  " + this.score;
+            return this.playerName.toUpperCase() + "   " + this.score;
         }
     }
 
