@@ -101,6 +101,7 @@ public class EnterHighScoreActivity extends AppCompatActivity {
         try {
             Intent showHighScoreActivityIntent = new Intent(this, ShowHighScoreActivity.class);
             startActivity(showHighScoreActivityIntent);
+            Log.d("EnterHighScoreActivity", "Going to HighScoreActivity");
             finish();
         }
         catch(Exception exception) {

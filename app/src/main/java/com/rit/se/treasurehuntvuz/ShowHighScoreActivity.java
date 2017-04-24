@@ -30,10 +30,15 @@ public class ShowHighScoreActivity extends AppCompatActivity {
         try {
             Intent mainActivityIntent = new Intent(ShowHighScoreActivity.this, MainActivity.class);
             startActivity(mainActivityIntent);
+            Log.d("ShowHighScoreActivity", "Going to MainActivity");
             finish();
         }
         catch(Exception exception) {
-            Log.e("AboutActivity", exception.getMessage());
+            if(exception.getMessage() != null) {
+                Log.e("ShowHighScoreActivity", exception.getMessage());
+            } else {
+                Log.e("ShowHighScoreActivity", "Exception without a message.");
+            }
         }
     }
 }

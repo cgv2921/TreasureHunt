@@ -1,6 +1,7 @@
 package com.rit.se.treasurehuntvuz;
 
 import android.content.Intent;
+import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -92,20 +93,46 @@ public class StartGameActivity extends AppCompatActivity {
         try {
             Intent mainActivityIntent = new Intent(StartGameActivity.this, MainActivity.class);
             startActivity(mainActivityIntent);
+            Log.d("StartGameActivity", "Going to MainActivity");
             finish();
         }
         catch(Exception exception) {
-            Log.e("StartGameActivity", exception.getMessage());
+            if(exception.getMessage() != null) {
+                Log.e("StartGameActivity", exception.getMessage());
+            } else {
+                Log.e("StartGameActivity", "Exception without a message.");
+            }
         }
     }
 
     private void onRandomButtonClick(Button randomButton) {
         try {
+            Location locOne = new Location("");
+            locOne.setLongitude(-70);
+            locOne.setLatitude(42);
+            TreasuresSingleton.getTreasures().addTreasure(locOne);
+
+            Location locTwo = new Location("");
+            locTwo.setLongitude(-70);
+            locTwo.setLatitude(41);
+            TreasuresSingleton.getTreasures().addTreasure(locTwo);
+
+            // TODO: Make this a treasure near your location
+            Location locThree = new Location("");
+            locThree.setLongitude(-77.65521079301834);
+            locThree.setLatitude(43.084121160172664);
+            TreasuresSingleton.getTreasures().addTreasure(locThree);
+
             Intent randomActivityIntent = new Intent(StartGameActivity.this, FindTreasureActivity.class);
             startActivity(randomActivityIntent);
+            Log.d("StartGameActivity", "Going to FindTreasureActivity");
             finish();
         } catch (Exception exception) {
-            Log.e("StartGameActivity", exception.getMessage());
+            if(exception.getMessage() != null) {
+                Log.e("StartGameActivity", exception.getMessage());
+            } else {
+                Log.e("StartGameActivity", "Exception without a message.");
+            }
         }
     }
 
@@ -118,12 +145,13 @@ public class StartGameActivity extends AppCompatActivity {
             try {
                 Intent findTreasureActivityIntent = new Intent(StartGameActivity.this, FindTreasureActivity.class);
                 startActivity(findTreasureActivityIntent);
+                Log.d("StartGameActivity", "Going to FindTreasureActivity");
                 finish();
             } catch (Exception exception) {
                 if(exception.getMessage() != null) {
                     Log.e("StartGameActivity", exception.getMessage());
                 } else {
-                    Log.e("HighScoreLoad", "Exception without a message.");
+                    Log.e("StartGameActivity", "Exception without a message.");
                 }
             }
         }

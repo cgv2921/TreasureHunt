@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // Go back to the android dashboard
+        Log.d("MainActivity", "Going back to Android Dashboard");
         finish();
     }
 
@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             Intent startGameActivityIntent = new Intent(MainActivity.this, StartGameActivity.class);
             startActivity(startGameActivityIntent);
+            Log.d("MainActivity", "Going to StartGameActivity");
             finish();
         } catch (Exception exception) {
             if(exception.getMessage() != null) {
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             Intent showHighScoreActivityIntent = new Intent(MainActivity.this, ShowHighScoreActivity.class);
             startActivity(showHighScoreActivityIntent);
+            Log.d("MainActivity", "Going to HighScoreActivity");
             finish();
         } catch (Exception exception) {
             if(exception.getMessage() != null) {
@@ -117,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             Intent aboutActivityIntent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(aboutActivityIntent);
+            Log.d("MainActivity", "Going to AboutActivity");
             finish();
         } catch (Exception exception) {
             if(exception.getMessage() != null) {

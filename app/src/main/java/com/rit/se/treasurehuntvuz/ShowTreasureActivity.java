@@ -111,12 +111,15 @@ public class ShowTreasureActivity extends AppCompatActivity {
     public void onBackPressed() {
         if(!finalTreasure) {
             try {
-                finish(); // go back to FindTreasureLayout
+                Intent findTreasureActivityIntent = new Intent(ShowTreasureActivity.this, FindTreasureActivity.class);
+                startActivity(findTreasureActivityIntent);
+                Log.d("ShowTreasureActivity", "Going to FindTreasureActivity");
+                finish();
             } catch (Exception exception) {
                 if(exception.getMessage() != null) {
                     Log.e("ShowTreasureActivity", exception.getMessage());
                 } else {
-                    Log.e("HighScoreLoad", "Exception without a message.");
+                    Log.e("ShowTreasureActivity", "Exception without a message.");
                 }
             }
         }
@@ -124,15 +127,17 @@ public class ShowTreasureActivity extends AppCompatActivity {
             try {
                 Intent enterHighScoreActivityIntent = new Intent(ShowTreasureActivity.this, EnterHighScoreActivity.class);
                 enterHighScoreActivityIntent.putExtra("HIGHSCORE", TreasuresSingleton.getTreasures().getTreasureHuntScore());
+
                 TreasuresSingleton.getTreasures().saveTreasureHuntGame(false);
+
                 startActivity(enterHighScoreActivityIntent);
-                FindTreasureActivity.findTreasureActivity.finish();
+                Log.d("ShowTreasureActivity", "Going to EnterHighScoreActivity");
                 finish();
             } catch (Exception exception) {
                 if(exception.getMessage() != null) {
                     Log.e("ShowTreasureActivity", exception.getMessage());
                 } else {
-                    Log.e("HighScoreLoad", "Exception without a message.");
+                    Log.e("ShowTreasureActivity", "Exception without a message.");
                 }
             }
         }

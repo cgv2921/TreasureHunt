@@ -17,8 +17,4 @@ public class TreasureHuntVuzApp extends Application {
     static File getApplicationFilesDir() {
         return instance.getFilesDir();
     }
-
-    static LocationManager getApplicationLocationService() {
-        return (LocationManager)instance.getSystemService(LOCATION_SERVICE);
-    }
 }

@@ -47,6 +47,7 @@ public class SaveGameActivity extends AppCompatActivity {
             TreasuresSingleton.getTreasures().saveTreasureHuntGame(resume);
             Intent mainActivityIntent = new Intent(this, MainActivity.class);
             startActivity(mainActivityIntent);
+            Log.d("SaveGameActivity","Going to StartGameActivity");
             finish();
         }
         catch(Exception exception) {
@@ -68,6 +69,17 @@ public class SaveGameActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        saveGame(false);
+        try {
+            Intent findTreasureActivityIntent = new Intent(SaveGameActivity.this, FindTreasureActivity.class);
+            startActivity(findTreasureActivityIntent);
+            Log.d("SaveGameActivity","Going back to FindTreasureActivity");
+            finish();
+        } catch (Exception exception) {
+            if(exception.getMessage() != null) {
+                Log.e("SaveGameActivity", exception.getMessage());
+            } else {
+                Log.e("SaveGameActivity", "Exception without a message.");
+            }
+        }
     }
 }
