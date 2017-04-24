@@ -310,7 +310,7 @@ public class FindTreasureActivity extends AppCompatActivity {
 
     private void updatePlayerHints(float distanceToTreasure, float bearingToTreasure) {
 
-        Log.d("FindTreasureActivity", String.format("Distance: %f Bearing: %f", distanceToTreasure, bearingToTreasure));
+        Log.v("FindTreasureActivity", String.format("Distance: %f Bearing: %f", distanceToTreasure, bearingToTreasure));
 
         // set the distance fragment
         String distanceFragment;

@@ -19,12 +19,14 @@ public class SaveGameActivity extends AppCompatActivity {
         String saveGameString = getString(R.string.save_game_string);
         TextView saveGameTextView = (TextView) findViewById(R.id.save_game_text_view);
         saveGameTextView.setText(saveGameString);
-        saveGameTextView.setTextSize(26);
+        saveGameTextView.setTextSize(30);
+        saveGameTextView.setPadding(0, 5, 0, 5);
 
         // Set start button
         String yesButtonString = getString(R.string.yes_button);
         Button yesButton = (Button) findViewById(R.id.yes_button);
         yesButton.setText(yesButtonString);
+        yesButton.setTextSize(26);
         yesButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onYesButtonClick((Button) v);
@@ -35,6 +37,7 @@ public class SaveGameActivity extends AppCompatActivity {
         String noButtonString = getString(R.string.no_button);
         Button noButton = (Button) findViewById(R.id.no_button);
         noButton.setText(noButtonString);
+        noButton.setTextSize(26);
         noButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onNoButtonClick((Button) v);

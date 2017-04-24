@@ -26,7 +26,7 @@ public class ShowTreasureActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_showtreasure);
+        setContentView(R.layout.activity_show_treasure);
 
         int numCollected = getIntent().getIntExtra("NUM_COLLECTED", -1);
         int numTotal = getIntent().getIntExtra("NUM_TOTAL", -1);
