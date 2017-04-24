@@ -1,18 +1,14 @@
 package com.rit.se.treasurehuntvuz;
 
-import android.content.Context;
-import android.content.Intent;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.os.Handler;
+import android.content.*;
+import android.content.pm.PackageManager;
+import android.location.*;
+import android.os.*;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.Manifest;
 import android.widget.TextView;
-import android.content.pm.PackageManager;
 
 // Jeffrey Haines 3/4/17
 //    (Old) Made FindTreasureActivity a single instance so we can kill it when player finds all the treasure etc.
