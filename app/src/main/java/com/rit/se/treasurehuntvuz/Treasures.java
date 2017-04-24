@@ -21,12 +21,25 @@ class Treasures implements Serializable {
             this.latitude = this.location.getLatitude();
         }
 
-        Treasure(double longitude, double latitude) {
-            this.longitude = longitude;
-            this.latitude = latitude;
+        // makes a copy of passed treasure
+        Treasure(Treasure treasure) {
+            this.longitude = treasure.getLongitude();
+            this.latitude = treasure.getLatitude();
             this.location = new Location(LocationManager.GPS_PROVIDER);
             this.location.setLongitude(longitude);
             this.location.setLatitude(latitude);
+            this.found = treasure.getFound();
+            if(treasure.getFoundTime() != null) {
+                this.foundTime = (Calendar) treasure.getFoundTime().clone();
+            }
+        }
+
+        double getLongitude() {
+            return longitude;
+        }
+
+        double getLatitude() {
+            return latitude;
         }
 
         Location getLocation() {
@@ -237,7 +250,7 @@ class Treasures implements Serializable {
 
                 this.treasures.clear();
                 for(Treasure treasure : serializedTreasures.treasures) {
-                    this.treasures.add(new Treasure(treasure.longitude, treasure.latitude));
+                    this.treasures.add(new Treasure(treasure));
                 }
 
                 this.numCollected = serializedTreasures.numCollected;
