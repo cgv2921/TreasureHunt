@@ -16,7 +16,6 @@
     <string name="high_score_title_string" formatted="true"><u>High Scores</u></string>
     <string name="high_score_string" formatted="true">%1$s %2$d</string>
     <string name="about_button" formatted="false">About</string>
-    <string name="loadFile_button" formatted="false">Load File</string>
     <string name="save_game_string" formatted="false">Would you like to save?</string>
     <string name="yes_button" formatted="false">Yes</string>
     <string name="no_button" formatted="false">No</string>

@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         highScoreButton.setTextSize(26);
         highScoreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                onHighScoreButtonClick((Button) v);
+                onHighscoreButtonClick((Button) v);
             }
         });
 
@@ -112,11 +112,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void onHighScoreButtonClick(Button fileButton) {
+    private void onHighscoreButtonClick(Button fileButton) {
         try {
-            Intent showHighScoreActivityIntent = new Intent(MainActivity.this, ShowHighScoreActivity.class);
-            startActivity(showHighScoreActivityIntent);
-            Log.d("MainActivity", "Going to HighScoreActivity");
+            Intent showHighscoreActivityIntent = new Intent(MainActivity.this, ShowHighscoreActivity.class);
+            startActivity(showHighscoreActivityIntent);
+            Log.d("MainActivity", "Going to HighscoreActivity");
             finish();
         } catch (Exception exception) {
             if(exception.getMessage() != null) {

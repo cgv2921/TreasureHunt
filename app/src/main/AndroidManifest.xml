@@ -21,11 +21,10 @@
             android:name=".FindTreasureActivity"
             android:launchMode="singleInstance" />
         <activity android:name=".ShowTreasureActivity" />
-        <activity android:name=".EnterHighScoreActivity" />
+        <activity android:name=".EnterHighscoreActivity" />
         <activity android:name=".StartGameActivity" />
         <activity android:name=".ShowFilesActivity" />
-        <activity android:name=".FileOpenActivity"/>
-        <activity android:name=".ShowHighScoreActivity" />
+        <activity android:name=".ShowHighscoreActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".SaveGameActivity" />
     </application>

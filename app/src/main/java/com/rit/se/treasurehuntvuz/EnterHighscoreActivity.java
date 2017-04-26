@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class EnterHighScoreActivity extends AppCompatActivity {
+public class EnterHighscoreActivity extends AppCompatActivity {
     private String playerName;
     private int highScore;
     private EditText enterNameField;
@@ -86,9 +86,9 @@ public class EnterHighScoreActivity extends AppCompatActivity {
             }
             catch (Exception exception) {
                 if(exception.getMessage() != null) {
-                    Log.e("EnterHighScoreActivity", exception.getMessage());
+                    Log.e("EnterHighscoreActivity", exception.getMessage());
                 } else {
-                    Log.e("EnterHighScoreActivity", "Exception without a message.");
+                    Log.e("EnterHighscoreActivity", "Exception without a message.");
                 }
             }
 
@@ -101,16 +101,16 @@ public class EnterHighScoreActivity extends AppCompatActivity {
 
     private void showHighScoreLayout() {
         try {
-            Intent showHighScoreActivityIntent = new Intent(this, ShowHighScoreActivity.class);
+            Intent showHighScoreActivityIntent = new Intent(this, ShowHighscoreActivity.class);
             startActivity(showHighScoreActivityIntent);
-            Log.d("EnterHighScoreActivity", "Going to HighScoreActivity");
+            Log.d("EnterHighscoreActivity", "Going to HighScoreActivity");
             finish();
         }
         catch(Exception exception) {
             if(exception.getMessage() != null) {
-                Log.e("EnterHighScoreActivity", exception.getMessage());
+                Log.e("EnterHighscoreActivity", exception.getMessage());
             } else {
-                Log.e("EnterHighScoreActivity", "Exception without a message.");
+                Log.e("EnterHighscoreActivity", "Exception without a message.");
             }
         }
     }
