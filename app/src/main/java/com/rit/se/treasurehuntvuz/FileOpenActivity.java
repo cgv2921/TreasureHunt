@@ -83,7 +83,6 @@ public class FileOpenActivity extends AppCompatActivity {
     }
 
     private void onLoadButtonClick(Button startButton) throws FileNotFoundException {
-
         try {
 
             Intent showFilesActivityIntent = new Intent(FileOpenActivity.this, ShowFilesActivity.class);
@@ -93,39 +92,7 @@ public class FileOpenActivity extends AppCompatActivity {
             Log.e("FileOpenActivity", exception.getMessage());
         }
 
-   /*     TextView tv = (TextView)findViewById(R.id.loadFile_button);
-
-        File dir = Environment.getExternalStorageDirectory().getAbsoluteFile();
-
-        File file = new File(dir,"mylocations.txt");
-        if(file.exists())   // check if file exist
-        {
-            String text = new String();
-
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(file));
-                String line;
-                line = br.readLine();
-                tv.setText(line);
-
-            }
-            catch (IOException e) {
-                tv.setText(e.toString());
-            }
-
-        }
-        else
-        {
-            tv.setText("Sorry file doesn't exist!!");
-        } */
-
-
-
-
-
-
-
-         }
+    }
 
 }
 

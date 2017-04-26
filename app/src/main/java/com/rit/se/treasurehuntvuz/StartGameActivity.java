@@ -110,6 +110,23 @@ public class StartGameActivity extends AppCompatActivity {
         }
     }
 
+    private void onResumeButtonClick(Button resumeButton) {
+        if(TreasuresSingleton.getTreasures().getResume()) {
+            try {
+                Intent findTreasureActivityIntent = new Intent(StartGameActivity.this, FindTreasureActivity.class);
+                startActivity(findTreasureActivityIntent);
+                Log.d("StartGameActivity", "Going to FindTreasureActivity");
+                finish();
+            } catch (Exception exception) {
+                if(exception.getMessage() != null) {
+                    Log.e("StartGameActivity", exception.getMessage());
+                } else {
+                    Log.e("StartGameActivity", "Exception without a message.");
+                }
+            }
+        }
+    }
+
     private void onRandomButtonClick(Button randomButton) {
         try {
             Location locOne = new Location("");
@@ -143,29 +160,12 @@ public class StartGameActivity extends AppCompatActivity {
 
     private void onFileButtonClick(Button fileButton) {
         try {
-            Intent loadFileIntent = new Intent(StartGameActivity.this, FileOpenActivity.class);
+            Intent loadFileIntent = new Intent(StartGameActivity.this, ShowFilesActivity.class);
             startActivity(loadFileIntent);
             finish();
         }
         catch (Exception exception) {
             Log.e("StartGameActivity", exception.getMessage());
-        }
-    }
-
-    private void onResumeButtonClick(Button resumeButton) {
-        if(TreasuresSingleton.getTreasures().getResume()) {
-            try {
-                Intent findTreasureActivityIntent = new Intent(StartGameActivity.this, FindTreasureActivity.class);
-                startActivity(findTreasureActivityIntent);
-                Log.d("StartGameActivity", "Going to FindTreasureActivity");
-                finish();
-            } catch (Exception exception) {
-                if(exception.getMessage() != null) {
-                    Log.e("StartGameActivity", exception.getMessage());
-                } else {
-                    Log.e("StartGameActivity", "Exception without a message.");
-                }
-            }
         }
     }
 }

@@ -34,7 +34,7 @@ public class ShowFilesActivity extends ListActivity {
     @Override
     public void onBackPressed() {
         try {
-            Intent fileOpenActivityIntent = new Intent(ShowFilesActivity.this, FileOpenActivity.class);
+            Intent fileOpenActivityIntent = new Intent(ShowFilesActivity.this, StartGameActivity.class);
             startActivity(fileOpenActivityIntent);
             finish();
         }
@@ -87,41 +87,31 @@ public class ShowFilesActivity extends ListActivity {
             onFileClick(o);
         }
     }
+
     private void onFileClick(Option o)
     {
-        Toast.makeText(this, "File Clicked: "+o.getName(), Toast.LENGTH_SHORT).show();
-        TextView tv = (TextView)findViewById(R.id.loadFile_button);
-
-        //Intent mainActivityIntent = new Intent(ShowFileseActivity.this, FileOpenActivity.class);
-        //startActivity(mainActivityIntent);
-
-
-        /**
         File dir = Environment.getExternalStorageDirectory().getAbsoluteFile();
 
-
-        File file = new File(dir,"mylocations.txt");
+        File file = new File(dir, o.getName());
         if(file.exists())   // check if file exist
         {
-            String text = new String();
 
             try {
                 BufferedReader br = new BufferedReader(new FileReader(file));
                 String line;
                 line = br.readLine();
-                tv.setText(line);
+                Toast.makeText(this, "Info in File: "+line, Toast.LENGTH_SHORT).show();
 
             }
             catch (IOException e) {
-                tv.setText(e.toString());
+                Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
             }
 
         }
         else
         {
-            tv.setText("Sorry file doesn't exist!!");
+            Toast.makeText(this, "Sorry, File doesn't exist!", Toast.LENGTH_SHORT).show();
         }
-         **/
 
     }
 
