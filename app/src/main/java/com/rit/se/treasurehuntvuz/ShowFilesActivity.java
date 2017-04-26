@@ -102,6 +102,8 @@ public class ShowFilesActivity extends ListActivity {
                 line = br.readLine();
                 Toast.makeText(this, "Info in File: "+line, Toast.LENGTH_SHORT).show();
 
+                /*Intent fileActivityIntent = new Intent(ShowFilesActivity.this, FindTreasureActivity.class);
+                startActivity(fileActivityIntent);*/
             }
             catch (IOException e) {
                 Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
