@@ -20,14 +20,13 @@ import android.widget.TextView;
 //    Link that explains how to pass information over an intent
 //        http://stackoverflow.com/questions/2091465/how-do-i-pass-data-between-activities-on-android
 public class ShowTreasureActivity extends AppCompatActivity {
-
     private AnimationDrawable treasureAnimation;
     private boolean finalTreasure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_showtreasure);
+        setContentView(R.layout.activity_show_treasure);
 
         int numCollected = getIntent().getIntExtra("NUM_COLLECTED", -1);
         int numTotal = getIntent().getIntExtra("NUM_TOTAL", -1);
@@ -112,19 +111,34 @@ public class ShowTreasureActivity extends AppCompatActivity {
     public void onBackPressed() {
         if(!finalTreasure) {
             try {
-                finish(); // go back to FindTreasureLayout
+                Intent findTreasureActivityIntent = new Intent(ShowTreasureActivity.this, FindTreasureActivity.class);
+                startActivity(findTreasureActivityIntent);
+                Log.d("ShowTreasureActivity", "Going to FindTreasureActivity");
+                finish();
             } catch (Exception exception) {
-                Log.e("ShowTreasureActivity", exception.getMessage());
+                if(exception.getMessage() != null) {
+                    Log.e("ShowTreasureActivity", exception.getMessage());
+                } else {
+                    Log.e("ShowTreasureActivity", "Exception without a message.");
+                }
             }
         }
         else {
             try {
-                Intent enterHighscoreActivityIntent = new Intent(ShowTreasureActivity.this, EnterHighscoreActivity.class);
-                startActivity(enterHighscoreActivityIntent);
-                FindTreasureActivity.findTreasureActivity.finish();
+                Intent enterHighScoreActivityIntent = new Intent(ShowTreasureActivity.this, EnterHighScoreActivity.class);
+                enterHighScoreActivityIntent.putExtra("HIGHSCORE", TreasuresSingleton.getTreasures().getTreasureHuntScore());
+
+                TreasuresSingleton.getTreasures().saveTreasureHuntGame(false);
+
+                startActivity(enterHighScoreActivityIntent);
+                Log.d("ShowTreasureActivity", "Going to EnterHighScoreActivity");
                 finish();
             } catch (Exception exception) {
-                Log.e("ShowTreasureActivity", exception.getMessage());
+                if(exception.getMessage() != null) {
+                    Log.e("ShowTreasureActivity", exception.getMessage());
+                } else {
+                    Log.e("ShowTreasureActivity", "Exception without a message.");
+                }
             }
         }
     }

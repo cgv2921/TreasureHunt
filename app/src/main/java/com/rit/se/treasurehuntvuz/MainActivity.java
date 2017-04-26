@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 // Jeffrey Haines 3/6/17
-//    Created the main Activity, to get to Start, Highscore, and About screens.
-
+//    Created the main Activity, to get to Start, High Score, and About screens.
+// Jeffrey Haines 4/15/17
+//    High Score button now takes your to the High Score screen.
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -17,23 +19,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // set main menu text view
+        String whereToPlayString = getString(R.string.main_menu_string);
+        TextView whereToPlayTextView = (TextView) findViewById(R.id.main_menu_text_view);
+        whereToPlayTextView.setText(whereToPlayString);
+        whereToPlayTextView.setTextSize(30);
+        whereToPlayTextView.setPadding(0, 5, 0, 5);
+
         // Set start button
         String startButtonString = getString(R.string.start_button);
         Button startButton = (Button) findViewById(R.id.start_button);
         startButton.setText(startButtonString);
+        startButton.setTextSize(26);
         startButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onStartButtonClick((Button) v);
             }
         });
 
-        // Set highscore button
-        String highscoreButtonString = getString(R.string.highscore_button);
-        Button highscoreButton = (Button) findViewById(R.id.highscore_button);
-        highscoreButton.setText(highscoreButtonString);
-        highscoreButton.setOnClickListener(new View.OnClickListener() {
+        // Set high score button
+        String highScoreButtonString = getString(R.string.high_score_button);
+        Button highScoreButton = (Button) findViewById(R.id.high_score_button);
+        highScoreButton.setText(highScoreButtonString);
+        highScoreButton.setTextSize(26);
+        highScoreButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                onHighscoreButtonClick((Button) v);
+                onHighScoreButtonClick((Button) v);
             }
         });
 
@@ -41,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         String aboutButtonString = getString(R.string.about_button);
         Button aboutButton = (Button) findViewById(R.id.about_button);
         aboutButton.setText(aboutButtonString);
+        aboutButton.setTextSize(26);
         aboutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 onAboutButtonClick((Button) v);
@@ -81,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // Go back to the android dashboard
+        Log.d("MainActivity", "Going back to Android Dashboard");
         finish();
     }
 
@@ -89,19 +101,29 @@ public class MainActivity extends AppCompatActivity {
         try {
             Intent startGameActivityIntent = new Intent(MainActivity.this, StartGameActivity.class);
             startActivity(startGameActivityIntent);
+            Log.d("MainActivity", "Going to StartGameActivity");
             finish();
         } catch (Exception exception) {
-            Log.e("MainActivity", exception.getMessage());
+            if(exception.getMessage() != null) {
+                Log.e("MainActivity", exception.getMessage());
+            } else {
+                Log.e("HighScoreLoad", "Exception without a message.");
+            }
         }
     }
 
-    private void onHighscoreButtonClick(Button fileButton) {
+    private void onHighScoreButtonClick(Button fileButton) {
         try {
-            Intent showHighscoreActivityIntent = new Intent(MainActivity.this, ShowHighscoreActivity.class);
-            startActivity(showHighscoreActivityIntent);
+            Intent showHighScoreActivityIntent = new Intent(MainActivity.this, ShowHighScoreActivity.class);
+            startActivity(showHighScoreActivityIntent);
+            Log.d("MainActivity", "Going to HighScoreActivity");
             finish();
         } catch (Exception exception) {
-            Log.e("MainActivity", exception.getMessage());
+            if(exception.getMessage() != null) {
+                Log.e("MainActivity", exception.getMessage());
+            } else {
+                Log.e("HighScoreLoad", "Exception without a message.");
+            }
         }
     }
 
@@ -109,9 +131,14 @@ public class MainActivity extends AppCompatActivity {
         try {
             Intent aboutActivityIntent = new Intent(MainActivity.this, AboutActivity.class);
             startActivity(aboutActivityIntent);
+            Log.d("MainActivity", "Going to AboutActivity");
             finish();
         } catch (Exception exception) {
-            Log.e("MainActivity", exception.getMessage());
+            if(exception.getMessage() != null) {
+                Log.e("MainActivity", exception.getMessage());
+            } else {
+                Log.e("HighScoreLoad", "Exception without a message.");
+            }
         }
     }
 

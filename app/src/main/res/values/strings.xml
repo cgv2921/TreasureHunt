@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">TreasureHunt</string>
+
+    <!-- Application Strings -->
+    <string name="main_menu_string" formatted="false">Main Menu</string>
     <string name="progress_string" formatted="true">%1$d/%2$d completed!</string>
     <string name="final_treasure_string" formatted="false">You found all the treasure!</string>
     <string name="score_string" formatted="true">Score: %1$d</string>
@@ -7,32 +10,42 @@
     <string name="random_button" formatted="false">Random</string>
     <string name="file_button" formatted="false">File</string>
     <string name="resume_button" formatted="false">Resume</string>
-    <string name="where_to_start" formatted="false">What would you like to play?</string>
+    <string name="where_to_play_string" formatted="false">What would you like to play?</string>
     <string name="start_button" formatted="false">Start</string>
-    <string name="highscore_button" formatted="false">Highscores</string>
+    <string name="high_score_button" formatted="false">High Scores</string>
+    <string name="high_score_title_string" formatted="true"><u>High Scores</u></string>
+    <string name="high_score_string" formatted="true">%1$s %2$d</string>
     <string name="about_button" formatted="false">About</string>
     <string name="loadFile_button" formatted="false">Load File</string>
+    <string name="save_game_string" formatted="false">Would you like to save?</string>
+    <string name="yes_button" formatted="false">Yes</string>
+    <string name="no_button" formatted="false">No</string>
 
-    <!-- AboutActivity/Layout -->
-    <string name="jeffrey_name">Jeffrey Haines</string>
-    <string name="jeffrey_email">jdh6660@rit.edu</string>
+    <!-- About Activity Strings -->
+    <string name="jeffrey_name" formatted="false">Jeffrey Haines</string>
+    <string name="jeffrey_email" formatted="false">jdh6660@rit.edu</string>
 
-    <string name="huseen_name">Huseen Mahkareem</string>
-    <string name="huseen_email">hjm3628@rit.edu</string>
+    <string name="huseen_name" formatted="false">Huseen Mahkareem</string>
+    <string name="huseen_email" formatted="false">hjm3628@rit.edu</string>
 
-    <string name="colton_name">Colton Venditto</string>
-    <string name="colton_email">cgv2921@rit.edu</string>
+    <string name="colton_name" formatted="false">Colton Venditto</string>
+    <string name="colton_email" formatted="false">cgv2921@rit.edu</string>
 
-    <string name="nathen_name">Nathan Shaw</string>
-    <string name="nathen_email">nms7569@rit.edu</string>
+    <string name="nathen_name" formatted="false">Nathan Shaw</string>
+    <string name="nathen_email" formatted="false">nms7569@rit.edu</string>
 
-    <string name="aziz_name">Aziz Almerdasi</string>
-    <string name="aziz_email">aa4140@rit.edu</string>
+    <string name="aziz_name" formatted="false">Aziz Almerdasi</string>
+    <string name="aziz_email" formatted="false">aa4140@rit.edu</string>
 
-    <string name="rafael_name">Rafael Lopez</string>
-    <string name="rafael_email">rel9676@rit.edu</string>
+    <string name="rafael_name" formatted="false">Rafael Lopez</string>
+    <string name="rafael_email" formatted="false">rel9676@rit.edu</string>
 
-    <string name="steven_name">Steven Greenberg</string>
-    <string name="steven_email">sjg8961@rit.edu</string>
+    <string name="steven_name" formatted="false">Steven Greenberg</string>
+    <string name="steven_email" formatted="false">sjg8961@rit.edu</string>
+
+    <!-- Find Treasure Strings -->
+    <string name="player_coins_string" formatted="true">Coins: %1$d</string>
+    <string name="player_hints_string" formatted="true">You are %1$s and you are getting %2$s</string>
+    <string name="gps_waiting_fragment" formatted="false">Waiting for GPS&#8230;</string>
 
 </resources>

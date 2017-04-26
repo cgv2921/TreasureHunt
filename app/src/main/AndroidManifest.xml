@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.rit.se.treasurehuntvuz">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".TreasureHuntVuzApp"
         android:allowBackup="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -21,13 +21,13 @@
             android:name=".FindTreasureActivity"
             android:launchMode="singleInstance" />
         <activity android:name=".ShowTreasureActivity" />
-        <activity android:name=".EnterHighscoreActivity" />
+        <activity android:name=".EnterHighScoreActivity" />
         <activity android:name=".StartGameActivity" />
         <activity android:name=".ShowFilesActivity" />
-        <activity android:name=".ResumeGameActivity" />
+        <activity android:name=".FileOpenActivity"/>
+        <activity android:name=".ShowHighScoreActivity" />
         <activity android:name=".AboutActivity" />
-        <activity android:name=".FileOpenActivity">
-        </activity>
+        <activity android:name=".SaveGameActivity" />
     </application>
 
 </manifest>

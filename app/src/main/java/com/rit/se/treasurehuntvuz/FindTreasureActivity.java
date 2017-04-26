@@ -1,183 +1,373 @@
 package com.rit.se.treasurehuntvuz;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.content.*;
+import android.content.pm.PackageManager;
+import android.location.*;
+import android.os.*;
 import android.support.v7.app.AppCompatActivity;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
-import android.graphics.Canvas;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.Manifest;
+import android.widget.TextView;
 
 // Jeffrey Haines 3/4/17
-//    Made FindTreasureActivity a single instance so we can kill it when player finds all the treasure etc.
+//    (Old) Made FindTreasureActivity a single instance so we can kill it when player finds all the treasure etc.
 //        http://stackoverflow.com/questions/10379134/finish-an-activity-from-another-activity
+// Jeffrey Haines 4/22/17
+//    Implemented FindTreasureActivity using a thread + handler message system
+public class FindTreasureActivity extends AppCompatActivity {
+    // configuration
+    private static final long GPS_UPDATE_TIME = 5;
+    private static final float GPS_UPDATE_DISTANCE = 0;
+    private static final long FIND_TREASURE_THREAD_SLEEP = 1000;
+    private static final float TREASURE_FOUND_DISTANCE = 15.0f;
 
-public class FindTreasureActivity extends AppCompatActivity implements SensorEventListener {
+    private Handler handler;
+    private FindTreasureRunnable findTreasureRunnable;
+    private Thread findTreasureThread;
+    private LocationManager manager;
+    private LocationListener listener;
 
-    public static Activity findTreasureActivity;
-    private SensorManager mSensorManager;
-    private Sensor mOrient;
-    private Canvas findTreasureCanvas;
+    private class FindTreasureRunnable implements Runnable {
+        private final Object mPauseLock;
+        private boolean mPaused;
+        private boolean mFinished;
+        private Location mPlayerLocation;
+
+        FindTreasureRunnable() {
+            mPauseLock = new Object();
+            mPaused = false;
+            mFinished = false;
+            mPlayerLocation = null;
+        }
+
+        public void run() {
+            int tickCount = 0;
+
+            // find treasure loop
+            while (!mFinished) {
+                Log.v("FindTreasureActivity", String.format("findTreasureThread tick: %d", tickCount));
+
+                if(mPlayerLocation != null) {
+                    // get the closest treasure
+                    Treasures.Treasure closestTreasure = null;
+                    float closestDistance = Float.MAX_VALUE;
+                    for (Treasures.Treasure treasure : TreasuresSingleton.getTreasures().getTreasureList()) {
+                        if (!treasure.getFound()) {
+                            float nextClosestDistance = mPlayerLocation.distanceTo(treasure.getLocation());
+                            if (nextClosestDistance < closestDistance) {
+                                closestTreasure = treasure;
+                                closestDistance = nextClosestDistance;
+                            }
+                        }
+                    }
+
+                    // check found treasure criteria
+                    if (closestTreasure != null) {
+                        Log.v("FindTreasureActivity", String.format("Locked on Treasure: %f %f",
+                                closestTreasure.getLocation().getLongitude(),
+                                closestTreasure.getLocation().getLatitude()));
+
+                        // treasure is found
+                        if (closestDistance < TREASURE_FOUND_DISTANCE) {
+                            Log.d("FindTreasureActivity", "Found nearby treasure");
+                            TreasuresSingleton.getTreasures().foundTreasure(closestTreasure.getLocation());
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    updateCoins();
+                                    pickUpTreasure();
+                                }
+                            });
+                            mFinished = true;
+                        }
+                        // update player hints
+                        else {
+                            final float closetBearingFinal = Math.abs(mPlayerLocation.bearingTo(
+                                    closestTreasure.getLocation()) - mPlayerLocation.getBearing());
+                            final float closestDistanceFinal = closestDistance;
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    updatePlayerHints(closestDistanceFinal, closetBearingFinal);
+                                }
+                            });
+                        }
+                    }
+                }
+                // not receiving user location
+                else {
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            updatePlayerHints(getString(R.string.gps_waiting_fragment));
+                        }
+                    });
+                }
+
+                try {
+                    Thread.sleep(FIND_TREASURE_THREAD_SLEEP);
+                } catch (InterruptedException e) {
+                }
+
+                // block thread when in pause state
+                synchronized (mPauseLock) {
+                    while (mPaused) {
+                        try {
+                            mPauseLock.wait();
+                        } catch (InterruptedException e) {
+                        }
+                    }
+                }
+
+                tickCount++;
+            }
+        }
+
+        void onPause() {
+            synchronized (mPauseLock) {
+                mPaused = true;
+            }
+        }
+
+        void onResume() {
+            synchronized (mPauseLock) {
+                mPaused = false;
+                mPauseLock.notifyAll();
+            }
+        }
+
+        void onFinish() {
+            // signal findTreasureThread to terminate
+            mFinished = true;
+        }
+
+        void onLocationChanged(Location newLocation) {
+            mPlayerLocation = newLocation;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        findTreasureActivity = this;
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_findtreasure);
 
-        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        mOrient = mSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
+        handler = new Handler(getApplicationContext().getMainLooper());
 
-        Bitmap findTreasureBitmap = Bitmap.createBitmap(428, 200, Bitmap.Config.ARGB_8888);
-        findTreasureCanvas = new Canvas(findTreasureBitmap);
+        // setup findTreasureThread
+        findTreasureRunnable = new FindTreasureRunnable();
+        findTreasureThread = new Thread()
+        {
+            @Override
+            public void run() {
+                findTreasureRunnable.run();
+            }
+        };
+
+        // setup location manager and listener
+        manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        listener = new LocationListener() {
+            @Override
+            public void onLocationChanged(Location location) {
+                if(location != null) {
+                    Log.v("FindTreasureActivity", String.format("Location update: %f, %f", location.getLongitude(), location.getLatitude()));
+                    // pass location to findTreasureThread
+                    findTreasureRunnable.onLocationChanged(new Location(location));
+                }
+                else {
+                    Log.d("FindTreasureActivity", "Null location");
+                }
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+                Log.v("FindTreasureActivity", String.format("Location provider status changed, %s id:%d", provider, status));
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+                Log.v("FindTreasureActivity", String.format("Location provider enabled, %s", provider));
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+                Log.v("FindTreasureActivity", String.format("Lost location provider, %s", provider));
+                findTreasureRunnable.onLocationChanged(null);
+            }
+        };
+
+        // request location permissions
+        if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        }
+        if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED) {
+            Log.d("FindTreasureActivity", "Location permission denied");
+            if(manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                Log.d("FindTreasureActivity", "Gps enabled");
+            }
+            else {
+                Log.d("FindTreasureActivity", "Gps disabled");
+            }
+
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+                Log.d("FindTreasureActivity", "Should show explanation");
+            }
+        }
     }
 
     @Override
     protected void onStart() {
+        // TODO: Fix application crash when device sleeps. Thread.start() already called.
+        Log.v("FindTreasureActivity", "Starting FindTreasureActivity");
+        findTreasureThread.start();
         super.onStart();
     }
 
     @Override
     protected void onResume() {
+        Log.v("FindTreasureActivity", "Resuming FindTreasureActivity");
+        updateCoins();
+        findTreasureRunnable.onResume();
+        startLocationUpdates();
         super.onResume();
-        mSensorManager.registerListener(this, mOrient, SensorManager.SENSOR_DELAY_UI);
     }
 
     @Override
     protected void onPause() {
+        Log.v("FindTreasureActivity", "Pausing FindTreasureActivity");
+        manager.removeUpdates(listener);
+        findTreasureRunnable.onPause();
         super.onPause();
-        mSensorManager.unregisterListener(this);
     }
 
     @Override
     protected void onStop() {
+        Log.v("FindTreasureActivity", "Stopping FindTreasureActivity");
+        manager.removeUpdates(listener);
+        findTreasureRunnable.onFinish();
         super.onStop();
     }
 
     @Override
     protected void onRestart() {
+        Log.v("FindTreasureActivity", "Restarting FindTreasureActivity");
+        manager.removeUpdates(listener);
+        findTreasureRunnable.onFinish();
         super.onRestart();
     }
 
     @Override
     protected void onDestroy() {
+        Log.v("FindTreasureActivity", "Destroying FindTreasureActivity");
+        manager.removeUpdates(listener);
+        findTreasureRunnable.onFinish();
         super.onDestroy();
     }
 
     @Override
     public void onBackPressed() {
         try {
-            Intent mainActivityIntent = new Intent(this, MainActivity.class);
-            startActivity(mainActivityIntent);
+            Intent saveGameActivityIntent = new Intent(this, SaveGameActivity.class);
+            startActivity(saveGameActivityIntent);
+            findTreasureRunnable.onFinish();
+            finish();
+            Log.d("FindTreasureActivity", "Going to SaveGameActivity");
         }
         catch(Exception exception) {
-            Log.e("FindTreasureActivity", exception.getMessage());
-        }
-    }
-
-    @Override
-    public final void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
-
-    @Override
-    public final void onSensorChanged(SensorEvent event) {
-        int yaw = (int)event.values[0];
-        updateTreasures(yaw);
-    }
-
-    private void updateTreasures(int yaw) {
-        // TODO: get real player location from GPS
-        double playerLat = 20.000;
-        double playerLon = 20.000;
-
-        // update each treasure
-        for(int i = 0; i < TreasuresSingleton.getTreasures().getList().size(); i++) {
-            TreasurePoint tempPoint = TreasuresSingleton.getTreasures().getList().get(i);
-
-            if(tempPoint.getFound())
-                continue;
-
-            /* TODO: The below code blocks relate to treasure proximity,
-                     they should be in an updateProximity(TreasurePoint treasurePoint) returns distance function */
-            // get player distance to treasure
-            double treasurePointDistance = distance(playerLat,
-                    tempPoint.getLat(), playerLon, tempPoint.getLon());
-            if(treasurePointDistance > tempPoint.getFurthestDistance())
-                tempPoint.setFurthestDistance(treasurePointDistance);
-
-            // set treasure found, if distance is less than 10%
-            if((int)(treasurePointDistance / tempPoint.getFurthestDistance()) * 100 < 10) {
-                pickUpTreasure(tempPoint);
-                continue; // treasure should disappear
+            if(exception.getMessage() != null) {
+                Log.e("FindTreasureActivity", exception.getMessage());
+            } else {
+                Log.e("FindTreasureActivity", "Exception without a message.");
             }
-
-            // set treasure proximity
-            tempPoint.setProximity(
-                    TreasurePoint.Proximity.getProximity(
-                            (int)(treasurePointDistance / tempPoint.getFurthestDistance()) * 100 ) );
-
-            // TODO: compute the yaw differential
-
-            drawTreasure(tempPoint, 50);
         }
     }
 
-    // x_center center of the treasure image,
-    public void drawTreasure(TreasurePoint treasurePoint, int x_center) {
-
-        Object drawableRes = TreasurePoint.Proximity.getDrawableRes(treasurePoint.getProximity());
-        Bitmap treasureImageBitmap = BitmapFactory.decodeResource(getResources(), (int)drawableRes);
-
-        findTreasureCanvas.drawBitmap(treasureImageBitmap, x_center, 100, null);
-
-        // TODO: How do we draw the bitmap/canvas to the screen?
+    private boolean startLocationUpdates() {
+        try {
+            // start location updates
+            Log.d("FindTreasureActivity", "Requesting location updates");
+            manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GPS_UPDATE_TIME, GPS_UPDATE_DISTANCE, listener);
+            return true;
+        } catch (SecurityException exception) {
+            if(exception.getMessage() != null) {
+                Log.e("FindTreasureActivity", exception.getMessage());
+            }
+            else {
+                Log.e("FindTreasureActivity", "Exception without a message.");
+            }
+        }
+        return false;
     }
 
-    /**
-     * CREDIT: http://stackoverflow.com/users/502162/david-george
-     * Calculate distance between two points in latitude and longitude
-     */
-    public static double distance(double lat1, double lat2, double lon1, double lon2) {
-        // TODO: we should unit test this function
-        final int R = 6371; // Radius of the earth
-
-        double latDistance = Math.toRadians(lat2 - lat1);
-        double lonDistance = Math.toRadians(lon2 - lon1);
-        double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
-                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
-                * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        return R * c * 1000; // convert to meters
+    private void updateCoins() {
+        String playerCoinsString = String.format(getString(R.string.player_coins_string),
+                TreasuresSingleton.getTreasures().getNumCoins());
+        TextView playerCoinsTextView = (TextView) findViewById(R.id.player_coin_text_view);
+        playerCoinsTextView.setText(playerCoinsString);
+        playerCoinsTextView.setTextSize(26);
     }
 
-    public boolean pickUpTreasure(TreasurePoint treasure) {
-        // found the treasure
-        treasure.setFoundTime();
-        treasure.setFound(true);
-        TreasuresSingleton.getTreasures().incrementNamCollected();
+    private void updatePlayerHints(float distanceToTreasure, float bearingToTreasure) {
 
-        // display the treasure
+        Log.v("FindTreasureActivity", String.format("Distance: %f Bearing: %f", distanceToTreasure, bearingToTreasure));
+
+        // set the distance fragment
+        String distanceFragment;
+        if (distanceToTreasure < 30){
+            distanceFragment = "blazing";
+        } else if(distanceToTreasure < 60){
+            distanceFragment = "hot";
+        } else if(distanceToTreasure < 120){
+            distanceFragment = "cold";
+        } else{
+            distanceFragment = "frezzing";
+        }
+
+        // set the bearing fragment
+        String bearingFragment;
+        if (bearingToTreasure < 15){
+            bearingFragment = "blazinger";
+        } else if(bearingToTreasure < 30){
+            bearingFragment = "hoter";
+        } else if(bearingToTreasure < 60){
+            bearingFragment = "colder";
+        } else{
+            bearingFragment = "frezzinger";
+        }
+
+        // set the player hint text
+        updatePlayerHints(String.format(getString(R.string.player_hints_string),
+                distanceFragment, bearingFragment));
+    }
+
+    private void updatePlayerHints(String playerHint) {
+        // set the player hint text
+        TextView playerHintsTextView = (TextView) findViewById(R.id.player_hints_text_view);
+        playerHintsTextView.setText(playerHint);
+        playerHintsTextView.setTextSize(26);
+    }
+
+    private boolean pickUpTreasure() {
         try {
             Intent showTreasureIntent = new Intent(FindTreasureActivity.this, ShowTreasureActivity.class);
 
-            showTreasureIntent.putExtra("TREASURE", TreasuresSingleton.getTreasures().getNumCollected());
+            showTreasureIntent.putExtra("NUM_COLLECTED", TreasuresSingleton.getTreasures().getNumCollected());
             showTreasureIntent.putExtra("NUM_TOTAL", TreasuresSingleton.getTreasures().getNumTotal());
 
-            FindTreasureActivity.this.startActivity(showTreasureIntent);
+            startActivity(showTreasureIntent);
+            findTreasureRunnable.onFinish();
+            finish();
+            Log.d("FindTreasureActivity", "Going to ShowTreasureActivity");
         }
         catch(Exception exception) {
-            Log.e("MainActivity", exception.getMessage());
+            if(exception.getMessage() != null) {
+                Log.e("FindTreasureActivity", exception.getMessage());
+            } else {
+                Log.e("FindTreasureActivity", "Exception without a message.");
+            }
             return false;
         }
-
         return true;
     }
 }
